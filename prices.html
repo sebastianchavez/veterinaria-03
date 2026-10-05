@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Precios · Huellitas Vet</title>
+  <meta name="description" content="Lista transparente de precios y paquetes para todos nuestros servicios." />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { primary: '#e07856', secondary: '#3fb8af', accent: '#f4c167' }, fontFamily: { display: ['Poppins'], sans: ['Nunito'] } } }
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="prices.html" class="bg-app text-gray-800 font-sans">
+  <div id="appHeader"></div>
+
+  <main class="pb-20">
+    <section class="hero-gradient py-16 md:py-20">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex chip chip-primary mb-4">Precios transparentes</div>
+        <h1 class="text-4xl md:text-6xl font-bold font-display mb-4" style="color:var(--color-text);">Planes y tarifas</h1>
+        <p class="text-lg text-muted max-w-2xl mx-auto">Sin sorpresas. Conoce de antemano el precio de cada servicio y elige el plan ideal para tu mascota.</p>
+      </div>
+    </section>
+
+    <section class="container mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div class="card p-7">
+          <div class="text-4xl mb-3">🐾</div>
+          <h3 class="font-bold font-display text-xl mb-1">Básico</h3>
+          <p class="text-sm text-muted mb-4">Consulta general y seguimiento</p>
+          <div class="text-3xl font-bold font-display text-primary mb-1">S/ 80</div>
+          <p class="text-xs text-muted mb-5">por consulta</p>
+          <ul class="space-y-2 text-sm text-muted mb-6">
+            <li class="flex gap-2"><span class="text-secondary">✓</span> Examen físico completo</li>
+            <li class="flex gap-2"><span class="text-secondary">✓</span> Diagnóstico profesional</li>
+            <li class="flex gap-2"><span class="text-secondary">✓</span> Plan de tratamiento</li>
+            <li class="flex gap-2"><span class="text-secondary">✓</span> Seguimiento por email</li>
+          </ul>
+          <a href="booking.html?servicio=sv1" class="btn-outline w-full justify-center text-sm">Reservar</a>
+        </div>
+        <div class="card p-7 relative border-2 border-primary shadow-xl">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">Más elegido</div>
+          <div class="text-4xl mb-3">⭐</div>
+          <h3 class="font-bold font-display text-xl mb-1">Premium</h3>
+          <p class="text-sm text-muted mb-4">Atención completa + spa</p>
+          <div class="text-3xl font-bold font-display text-primary mb-1">S/ 199</div>
+          <p class="text-xs text-muted mb-5">paquete mensual</p>
+          <ul class="space-y-2 text-sm text-muted mb-6">
+            <li class="flex gap-2"><span class="text-secondary">✓</span> 2 consultas mensuales</li>
+            <li class="flex gap-2"><span class="text-secondary">✓</span> Vacunación anual</li>
+            <li class="flex gap-2"><span class="text-secondary">✓</span> 1 baño + spa premium</li>
+            <li class="flex gap-2"><span class="text-secondary">✓</span> Análisis clínicos</li>
+            <li class="flex gap-2"><span class="text-secondary">✓</span> Línea directa 24/7</li>
+          </ul>
+          <a href="booking.html" class="btn-primary w-full justify-center text-sm">Contratar plan</a>
+        </div>
+        <div class="card p-7">
+          <div class="text-4xl mb-3">🐶</div>
+          <h3 class="font-bold font-display text-xl mb-1">Familiar</h3>
+          <p class="text-sm text-muted mb-4">Para varias mascotas</p>
+          <div class="text-3xl font-bold font-display text-primary mb-1">S/ 349</div>
+          <p class="text-xs text-muted mb-5">hasta 3 mascotas</p>
+          <ul class="space-y-2 text-sm text-muted mb-6">
+            <li class="flex gap-2"><span class="text-secondary">✓</span> Todo lo del plan Premium</li>
+            <li class="flex gap-2"><span class="text-secondary">✓</span> Para 3 mascotas</li>
+            <li class="flex gap-2"><span class="text-secondary">✓</span> Descuento en cirugías</li>
+            <li class="flex gap-2"><span class="text-secondary">✓</span> Visitas a domicilio</li>
+            <li class="flex gap-2"><span class="text-secondary">✓</span> Asesor nutricional</li>
+          </ul>
+          <a href="booking.html" class="btn-outline w-full justify-center text-sm">Contratar plan</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl md:text-4xl font-bold font-display" style="color:var(--color-text);">Lista de precios por servicio</h2>
+        <p class="text-muted mt-2">Consulta nuestra tarifa detallada de cada servicio individual.</p>
+      </div>
+      <div class="card overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead class="bg-soft">
+              <tr>
+                <th class="text-left p-4 font-bold font-display text-sm uppercase tracking-wider text-muted">Servicio</th>
+                <th class="text-left p-4 font-bold font-display text-sm uppercase tracking-wider text-muted hidden md:table-cell">Categoría</th>
+                <th class="text-left p-4 font-bold font-display text-sm uppercase tracking-wider text-muted hidden lg:table-cell">Duración</th>
+                <th class="text-right p-4 font-bold font-display text-sm uppercase tracking-wider text-muted">Precio</th>
+                <th class="text-right p-4"></th>
+              </tr>
+            </thead>
+            <tbody id="priceTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="container mx-auto px-4 sm:px-6 lg:px-8 mt-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="card p-7 flex items-start gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-secondary/15 flex items-center justify-center text-secondary flex-shrink-0">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <div>
+            <h4 class="font-bold font-display text-lg mb-2">Sin costos ocultos</h4>
+            <p class="text-sm text-muted leading-relaxed">El precio que ves incluye la consulta, diagnóstico y plan de tratamiento. Te avisamos antes de cualquier procedimiento adicional.</p>
+          </div>
+        </div>
+        <div class="card p-7 flex items-start gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-primary/15 flex items-center justify-center text-primary flex-shrink-0">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div>
+            <h4 class="font-bold font-display text-lg mb-2">Métodos flexibles</h4>
+            <p class="text-sm text-muted leading-relaxed">Acepta Yape, Plin, tarjeta de crédito/débito y efectivo. También planes de pago para cirugías grandes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="appFooter"></div>
+
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tbody = document.getElementById('priceTable');
+      tbody.innerHTML = SERVICIOS.map(s => `
+        <tr class="border-t border-soft hover:bg-soft/60 transition">
+          <td class="p-4">
+            <p class="font-bold font-display" style="color:var(--color-text);">${s.nombre}</p>
+            <p class="text-xs text-muted md:hidden">${s.categoria} · ${s.duracion} min</p>
+          </td>
+          <td class="p-4 hidden md:table-cell">
+            <span class="chip chip-primary">${s.categoria}</span>
+          </td>
+          <td class="p-4 text-sm text-muted hidden lg:table-cell">${s.duracion} min</td>
+          <td class="p-4 text-right">
+            <span class="font-bold font-display text-lg text-primary">${formatCurrency(s.precio)}</span>
+          </td>
+          <td class="p-4 text-right">
+            <a href="booking.html?servicio=${s.id}" class="text-primary font-bold text-sm hover:underline">Reservar →</a>
+          </td>
+        </tr>`).join('');
+    });
+  </script>
+</body>
+</html>

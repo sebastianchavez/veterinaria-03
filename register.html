@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crear cuenta · Huellitas Vet</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = { theme: { extend: { colors: { primary: '#e07856', secondary: '#3fb8af', accent: '#f4c167' }, fontFamily: { display: ['Poppins'], sans: ['Nunito'] } } } }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="register.html" class="bg-app text-gray-800 font-sans">
+  <main class="min-h-screen flex flex-col lg:flex-row">
+    <aside class="lg:w-1/2 hero-gradient relative overflow-hidden flex items-center justify-center p-10 lg:p-16">
+      <div class="blob-secondary w-80 h-80 -top-10 -left-10"></div>
+      <div class="blob-primary w-72 h-72 bottom-10 right-10"></div>
+      <div class="relative z-10 max-w-md text-center lg:text-left">
+        <a href="index.html" class="inline-flex items-center gap-2.5 mb-8">
+          <div class="w-12 h-12 rounded-2xl bg-secondary flex items-center justify-center">
+            <svg viewBox="0 0 24 24" class="w-7 h-7 text-white" fill="currentColor"><circle cx="6" cy="9" r="2.2"/><circle cx="10" cy="5" r="2.2"/><circle cx="14" cy="5" r="2.2"/><circle cx="18" cy="9" r="2.2"/><path d="M12 11c-2.5 0-4.5 2.5-4.5 5s2 4 4.5 4 4.5-1.5 4.5-4-2-5-4.5-5z"/></svg>
+          </div>
+          <span class="text-2xl font-bold font-display">Huellitas <span class="text-primary">Vet</span></span>
+        </a>
+        <h1 class="text-3xl lg:text-5xl font-bold font-display mb-4" style="color:var(--color-text);">Únete a nuestra familia</h1>
+        <p class="text-muted text-lg leading-relaxed mb-8">Crea tu cuenta gratis y empieza a gestionar las citas de tu mascota en un solo lugar.</p>
+        <ul class="space-y-3 text-sm text-gray-700">
+          <li class="flex items-start gap-3"><span class="w-6 h-6 rounded-full bg-secondary/20 text-secondary flex items-center justify-center flex-shrink-0 text-xs font-bold">✓</span>Reserva citas en segundos</li>
+          <li class="flex items-start gap-3"><span class="w-6 h-6 rounded-full bg-secondary/20 text-secondary flex items-center justify-center flex-shrink-0 text-xs font-bold">✓</span>Administra el perfil de tus mascotas</li>
+          <li class="flex items-start gap-3"><span class="w-6 h-6 rounded-full bg-secondary/20 text-secondary flex items-center justify-center flex-shrink-0 text-xs font-bold">✓</span>Historial médico y recordatorios</li>
+          <li class="flex items-start gap-3"><span class="w-6 h-6 rounded-full bg-secondary/20 text-secondary flex items-center justify-center flex-shrink-0 text-xs font-bold">✓</span>Pagos digitales integrados</li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="lg:w-1/2 flex items-center justify-center p-6 lg:p-10">
+      <div class="w-full max-w-md">
+        <div class="text-center mb-7">
+          <div class="inline-flex chip chip-secondary mb-3">Crear cuenta</div>
+          <h2 class="text-3xl font-bold font-display" style="color:var(--color-text);">Regístrate gratis</h2>
+          <p class="text-muted text-sm mt-2">Completa tus datos para empezar</p>
+        </div>
+        <form id="registerForm" class="space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div><label class="label-text">Nombre *</label><input id="nombre" class="input-field" required placeholder="Juan Pérez" /></div>
+            <div><label class="label-text">DNI</label><input id="dni" class="input-field" placeholder="12345678" maxlength="8" /></div>
+          </div>
+          <div><label class="label-text">Email *</label><input id="email" type="email" class="input-field" required placeholder="tu@email.com" /></div>
+          <div><label class="label-text">Teléfono</label><input id="telefono" type="tel" class="input-field" placeholder="+51 999 888 777" /></div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div><label class="label-text">Contraseña *</label><input id="password" type="password" class="input-field" required placeholder="Mínimo 6 caracteres" /></div>
+            <div><label class="label-text">Confirmar *</label><input id="password2" type="password" class="input-field" required placeholder="Repite la contraseña" /></div>
+          </div>
+          <div class="card-flat p-4 border-2 border-dashed border-soft">
+            <p class="text-xs font-bold text-muted uppercase tracking-wider mb-3">🐾 Mascota principal (opcional)</p>
+            <div class="grid grid-cols-2 gap-2">
+              <input id="mNombre" class="input-field text-sm" placeholder="Nombre" />
+              <select id="mEspecie" class="input-field text-sm">
+                <option value="perro">🐶 Perro</option>
+                <option value="gato">🐱 Gato</option>
+                <option value="ave">🦜 Ave</option>
+                <option value="conejo">🐰 Conejo</option>
+                <option value="otro">🐾 Otro</option>
+              </select>
+              <input id="mRaza" class="input-field text-sm" placeholder="Raza" />
+              <input id="mEdad" class="input-field text-sm" placeholder="Edad" />
+            </div>
+          </div>
+          <label class="flex items-start gap-2 text-sm text-muted">
+            <input type="checkbox" id="chkTerms" required class="mt-1 w-4 h-4 accent-primary" />
+            <span>Acepto los <a href="terms.html" class="text-primary font-bold hover:underline" target="_blank">términos y condiciones</a> y la <a href="privacy.html" class="text-primary font-bold hover:underline" target="_blank">política de privacidad</a>.</span>
+          </label>
+          <button type="submit" class="btn-primary w-full justify-center text-base" style="padding:1rem;">
+            Crear cuenta
+          </button>
+        </form>
+        <p class="text-center text-sm text-muted mt-6">
+          ¿Ya tienes cuenta? <a href="login.html" class="text-primary font-bold hover:underline">Ingresa aquí</a>
+        </p>
+        <p class="text-center text-xs text-soft mt-3">
+          <a href="index.html" class="hover:text-primary">← Volver al inicio</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('registerForm');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const data = {
+          nombre: document.getElementById('nombre').value.trim(),
+          email: document.getElementById('email').value.trim(),
+          telefono: document.getElementById('telefono').value.trim(),
+          dni: document.getElementById('dni').value.trim(),
+          password: document.getElementById('password').value,
+        };
+        if (data.password !== document.getElementById('password2').value) { UI.toast('Las contraseñas no coinciden', 'error'); return; }
+        if (data.password.length < 6) { UI.toast('La contraseña debe tener mínimo 6 caracteres', 'error'); return; }
+        if (!document.getElementById('chkTerms').checked) { UI.toast('Acepta los términos y condiciones', 'warning'); return; }
+
+        const res = Auth.register(data);
+        if (!res.ok) { UI.toast(res.error, 'error'); return; }
+
+        const mNombre = document.getElementById('mNombre').value.trim();
+        if (mNombre) {
+          Mascotas.create({
+            userId: res.user.id,
+            nombre: mNombre,
+            especie: document.getElementById('mEspecie').value,
+            raza: document.getElementById('mRaza').value.trim(),
+            edad: document.getElementById('mEdad').value.trim(),
+            peso: '', sexo: '', notas: ''
+          });
+        }
+
+        UI.toast('¡Bienvenido ' + data.nombre.split(' ')[0] + '! Tu cuenta fue creada.', 'success');
+        setTimeout(() => location.href = 'profile.html', 900);
+      });
+    });
+  </script>
+</body>
+</html>

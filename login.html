@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iniciar sesión · Huellitas Vet</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = { theme: { extend: { colors: { primary: '#e07856', secondary: '#3fb8af', accent: '#f4c167' }, fontFamily: { display: ['Poppins'], sans: ['Nunito'] } } } }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="login.html" class="bg-app text-gray-800 font-sans">
+  <main class="min-h-screen flex flex-col lg:flex-row">
+    <aside class="lg:w-1/2 hero-gradient relative overflow-hidden flex items-center justify-center p-10 lg:p-16">
+      <div class="blob-primary w-80 h-80 -top-10 -left-10"></div>
+      <div class="blob-secondary w-72 h-72 bottom-10 right-10"></div>
+      <div class="relative z-10 max-w-md text-center lg:text-left">
+        <a href="index.html" class="inline-flex items-center gap-2.5 mb-8">
+          <div class="w-12 h-12 rounded-2xl bg-primary flex items-center justify-center">
+            <svg viewBox="0 0 24 24" class="w-7 h-7 text-white" fill="currentColor"><circle cx="6" cy="9" r="2.2"/><circle cx="10" cy="5" r="2.2"/><circle cx="14" cy="5" r="2.2"/><circle cx="18" cy="9" r="2.2"/><path d="M12 11c-2.5 0-4.5 2.5-4.5 5s2 4 4.5 4 4.5-1.5 4.5-4-2-5-4.5-5z"/></svg>
+          </div>
+          <span class="text-2xl font-bold font-display">Huellitas <span class="text-primary">Vet</span></span>
+        </a>
+        <h1 class="text-3xl lg:text-5xl font-bold font-display mb-4" style="color:var(--color-text);">Bienvenido de vuelta</h1>
+        <p class="text-muted text-lg leading-relaxed mb-8">Ingresa a tu cuenta para gestionar las citas de tu mascota, ver su historial médico y mucho más.</p>
+        <div class="card-flat p-5 text-left">
+          <p class="text-xs font-bold uppercase tracking-wider text-muted mb-3">Usuarios de prueba</p>
+          <div class="space-y-2 text-sm">
+            <button class="quick-login w-full text-left px-3 py-2 rounded-lg bg-soft hover:bg-primary/10 transition flex items-center gap-2" data-email="juan@test.com" data-pass="123456">
+              <span class="w-2 h-2 rounded-full bg-primary"></span>
+              <span class="font-bold">juan@test.com</span> · 123456
+            </button>
+            <button class="quick-login w-full text-left px-3 py-2 rounded-lg bg-soft hover:bg-secondary/10 transition flex items-center gap-2" data-email="maria@test.com" data-pass="123456">
+              <span class="w-2 h-2 rounded-full bg-secondary"></span>
+              <span class="font-bold">maria@test.com</span> · 123456
+            </button>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <section class="lg:w-1/2 flex items-center justify-center p-6 lg:p-16">
+      <div class="w-full max-w-md">
+        <div class="text-center mb-8">
+          <div class="inline-flex chip chip-primary mb-3">Iniciar sesión</div>
+          <h2 class="text-3xl font-bold font-display" style="color:var(--color-text);">Accede a tu cuenta</h2>
+          <p class="text-muted text-sm mt-2">Ingresa tus credenciales para continuar</p>
+        </div>
+        <form id="loginForm" class="space-y-5">
+          <div>
+            <label class="label-text">Email</label>
+            <input id="email" type="email" required class="input-field" placeholder="tu@email.com" autocomplete="email" />
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <label class="label-text mb-0">Contraseña</label>
+              <a href="forgot-password.html" class="text-xs text-primary font-bold hover:underline">¿Olvidaste tu contraseña?</a>
+            </div>
+            <div class="relative">
+              <input id="password" type="password" required class="input-field pr-10" placeholder="••••••" autocomplete="current-password" />
+              <button type="button" id="togglePass" class="absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-primary">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+              </button>
+            </div>
+          </div>
+          <label class="flex items-center gap-2 text-sm text-muted">
+            <input type="checkbox" class="w-4 h-4 rounded accent-primary" />
+            <span>Recordarme</span>
+          </label>
+          <button type="submit" class="btn-primary w-full justify-center text-base" style="padding:1rem;">
+            Ingresar
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/></svg>
+          </button>
+        </form>
+        <p class="text-center text-sm text-muted mt-6">
+          ¿Aún no tienes cuenta? <a href="register.html" class="text-primary font-bold hover:underline">Regístrate aquí</a>
+        </p>
+        <p class="text-center text-xs text-soft mt-3">
+          <a href="index.html" class="hover:text-primary">← Volver al inicio</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('loginForm');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+        const res = Auth.login(email, password);
+        if (!res.ok) { UI.toast(res.error, 'error'); return; }
+        UI.toast('Bienvenido ' + res.user.nombre.split(' ')[0], 'success');
+        const redirect = Storage.get(STORAGE_KEYS.REDIRECT, null);
+        Storage.remove(STORAGE_KEYS.REDIRECT);
+        setTimeout(() => location.href = redirect || 'profile.html', 700);
+      });
+
+      document.querySelectorAll('.quick-login').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.getElementById('email').value = btn.dataset.email;
+          document.getElementById('password').value = btn.dataset.pass;
+        });
+      });
+
+      const togglePass = document.getElementById('togglePass');
+      togglePass.addEventListener('click', () => {
+        const p = document.getElementById('password');
+        p.type = p.type === 'password' ? 'text' : 'password';
+      });
+    });
+  </script>
+</body>
+</html>

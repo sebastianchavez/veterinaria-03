@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Términos y condiciones · Huellitas Vet</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = { theme: { extend: { colors: { primary: '#e07856', secondary: '#3fb8af', accent: '#f4c167' }, fontFamily: { display: ['Poppins'], sans: ['Nunito'] } } } }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="terms.html" class="bg-app text-gray-800 font-sans">
+  <div id="appHeader"></div>
+
+  <main class="pb-20">
+    <section class="hero-gradient py-12 md:py-16">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex chip chip-primary mb-3">Legal</div>
+        <h1 class="text-4xl md:text-5xl font-bold font-display" style="color:var(--color-text);">Términos y condiciones</h1>
+        <p class="text-muted mt-3">Última actualización: octubre 2026</p>
+      </div>
+    </section>
+
+    <section class="container mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <nav class="lg:col-span-1">
+          <div class="card p-5 lg:sticky lg:top-28">
+            <p class="text-xs font-bold uppercase tracking-wider text-muted mb-3 px-3">Contenido</p>
+            <div id="toc" class="space-y-1"></div>
+          </div>
+        </nav>
+
+        <article class="lg:col-span-3 card p-8 md:p-10 legal-content">
+          <section id="aceptacion">
+            <h2>1. Aceptación de los términos</h2>
+            <p>Al acceder y utilizar los servicios de <strong>Huellitas Vet</strong> (en adelante, "la Plataforma"), usted acepta cumplir y estar sujeto a los siguientes términos y condiciones de uso. Si no está de acuerdo con alguno de estos términos, le recomendamos no utilizar nuestros servicios.</p>
+            <p>Estos términos se aplican a todos los usuarios, navegadores, clientes, veterinarios y colaboradores que accedan o utilicen el servicio.</p>
+          </section>
+
+          <section id="servicios">
+            <h2>2. Descripción de los servicios</h2>
+            <p>Huellitas Vet es una plataforma digital que permite a los usuarios:</p>
+            <ul>
+              <li>Agendar citas veterinarias en línea con los profesionales de nuestra clínica.</li>
+              <li>Gestionar perfiles de sus mascotas con información médica básica.</li>
+              <li>Realizar pagos de forma digital a través de diversos métodos (Yape, Plin, tarjeta, efectivo).</li>
+              <li>Consultar el historial clínico y de citas de sus mascotas.</li>
+              <li>Recibir notificaciones y recordatorios sobre sus citas.</li>
+            </ul>
+            <p>Los servicios veterinarios propiamente dichos son proporcionados por los profesionales colegiados de Huellitas Vet, quienes son responsables de los diagnósticos, tratamientos y procedimientos médicos.</p>
+          </section>
+
+          <section id="registro">
+            <h2>3. Registro y cuenta de usuario</h2>
+            <h3>3.1 Requisitos</h3>
+            <p>Para utilizar los servicios de reserva, debe crear una cuenta proporcionando información veraz, completa y actualizada. Usted es responsable de mantener la confidencialidad de sus credenciales.</p>
+            <h3>3.2 Veracidad</h3>
+            <p>La información proporcionada durante el registro debe ser exacta. Cualquier dato falso puede resultar en la suspensión de su cuenta.</p>
+            <h3>3.3 Menores de edad</h3>
+            <p>Los usuarios menores de 18 años deben contar con la autorización de un padre o tutor legal para crear una cuenta y gestionar reservas.</p>
+          </section>
+
+          <section id="reservas">
+            <h2>4. Reservas y cancelaciones</h2>
+            <h3>4.1 Política de cancelación</h3>
+            <p>Las cancelaciones realizadas con <strong>al menos 24 horas de anticipación</strong> a la cita programada no tendrán costo alguno y, en caso de haber realizado un pago, se procederá al reembolso completo.</p>
+            <h3>4.2 Cancelaciones tardías</h3>
+            <p>Las cancelaciones con menos de 24 horas de anticipación están sujetas a un cargo del 50% del valor del servicio. Las inasistencias sin aviso (no-show) no son reembolsables.</p>
+            <h3>4.3 Reprogramación</h3>
+            <p>Puede reprogramar su cita una vez sin costo siempre que se haga con más de 12 horas de anticipación, sujeto a disponibilidad de horarios.</p>
+            <h3>4.4 Puntualidad</h3>
+            <p>Se solicita llegar 10 minutos antes de la cita. Pasados 15 minutos de la hora programada, la cita podrá ser cancelada sin reembolso para no afectar a otros pacientes.</p>
+          </section>
+
+          <section id="pagos">
+            <h2>5. Pagos y reembolsos</h2>
+            <p>Los precios de nuestros servicios se encuentran publicados en la sección de <a href="prices.html" class="text-primary font-bold hover:underline">Precios</a>. Aceptamos los siguientes métodos de pago:</p>
+            <ul>
+              <li>Yape</li>
+              <li>Plin</li>
+              <li>Tarjeta de crédito o débito (Visa, Mastercard, Diners)</li>
+              <li>Efectivo en consultorio</li>
+            </ul>
+            <p>Los pagos digitales se encuentran protegidos con encriptación SSL. Los reembolsos, cuando apliquen, se realizarán al mismo método de pago original en un plazo máximo de 7 días hábiles.</p>
+          </section>
+
+          <section id="obligaciones">
+            <h2>6. Obligaciones del usuario</h2>
+            <p>Al utilizar nuestra plataforma, usted se compromete a:</p>
+            <ul>
+              <li>Proporcionar información veraz sobre su mascota (edad, peso, alergias, antecedentes médicos).</li>
+              <li>Informar al veterinario sobre cualquier comportamiento agresivo o condiciones especiales de la mascota.</li>
+              <li>Respetar al personal veterinario y sus indicaciones médicas.</li>
+              <li>Cumplir con los protocolos de bioseguridad establecidos en la clínica.</li>
+              <li>No utilizar la plataforma con fines fraudulentos o ilegales.</li>
+              <li>Asistir a las citas programadas o cancelarlas con la anticipación debida.</li>
+            </ul>
+          </section>
+
+          <section id="propiedad">
+            <h2>7. Propiedad intelectual</h2>
+            <p>Todo el contenido de la plataforma Huellitas Vet (textos, imágenes, logos, código fuente, diseño) es propiedad de la empresa y está protegido por las leyes de propiedad intelectual. Queda prohibida su reproducción total o parcial sin autorización escrita.</p>
+            <p>El usuario conserva los derechos sobre el contenido que publica (fotos, descripciones de sus mascotas) y otorga a la plataforma una licencia no exclusiva para su uso dentro del servicio.</p>
+          </section>
+
+          <section id="limitacion">
+            <h2>8. Limitación de responsabilidad</h2>
+            <p>Huellitas Vet no se responsabiliza por:</p>
+            <ul>
+              <li>Daños derivados de información inexacta proporcionada por el usuario sobre su mascota.</li>
+              <li>Complicaciones médicas propias de los tratamientos veterinarios, aunque estos sean realizados con la mayor diligencia.</li>
+              <li>Reacciones adversas imprevistas a medicamentos o procedimientos.</li>
+              <li>Interrupciones temporales del servicio por mantenimiento o causas de fuerza mayor.</li>
+            </ul>
+            <p>Nuestra responsabilidad se limita al valor de los servicios contratados.</p>
+          </section>
+
+          <section id="emergencias">
+            <h2>9. Atención de emergencias</h2>
+            <p>En caso de emergencia veterinaria fuera del horario regular, contamos con servicio de guardia 24/7. El costo del servicio de emergencia es independiente del plan o membresía que pueda tener el usuario.</p>
+            <p>Para emergencias, contacte directamente a nuestra línea telefónica: <strong>+51 999 888 777</strong>.</p>
+          </section>
+
+          <section id="modificaciones">
+            <h2>10. Modificaciones a los términos</h2>
+            <p>Nos reservamos el derecho de modificar estos términos en cualquier momento. Las modificaciones serán efectivas inmediatamente después de su publicación en la plataforma. El uso continuado del servicio después de dichas modificaciones constituye la aceptación de los nuevos términos.</p>
+          </section>
+
+          <section id="privacidad">
+            <h2>11. Privacidad</h2>
+            <p>El tratamiento de sus datos personales se rige por nuestra <a href="privacy.html" class="text-primary font-bold hover:underline">Política de Privacidad</a>, la cual forma parte integral de estos términos.</p>
+          </section>
+
+          <section id="ley">
+            <h2>12. Ley aplicable y jurisdicción</h2>
+            <p>Estos términos se rigen por las leyes de la República del Perú. Cualquier controversia derivada de su interpretación será sometida a los tribunales competentes de la ciudad de Lima, Perú.</p>
+          </section>
+
+          <section id="contacto">
+            <h2>13. Contacto</h2>
+            <p>Para cualquier consulta sobre estos términos y condiciones, puede contactarnos a través de:</p>
+            <ul>
+              <li>Email: legal@huellitasvet.com</li>
+              <li>Teléfono: +51 999 888 777</li>
+              <li>Dirección: Av. Las Mascotas 123, San Borja, Lima — Perú</li>
+            </ul>
+          </section>
+
+          <div class="mt-10 pt-6 border-t border-soft text-center">
+            <p class="text-sm text-muted mb-3">Al utilizar nuestros servicios, confirma que ha leído y acepta estos términos y condiciones.</p>
+            <a href="index.html" class="btn-primary">Aceptar y volver al inicio</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <div id="appFooter"></div>
+
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('.legal-content section');
+      const toc = document.getElementById('toc');
+      const titles = {
+        aceptacion: 'Aceptación de los términos',
+        servicios: 'Descripción de los servicios',
+        registro: 'Registro y cuenta',
+        reservas: 'Reservas y cancelaciones',
+        pagos: 'Pagos y reembolsos',
+        obligaciones: 'Obligaciones del usuario',
+        propiedad: 'Propiedad intelectual',
+        limitacion: 'Limitación de responsabilidad',
+        emergencias: 'Atención de emergencias',
+        modificaciones: 'Modificaciones',
+        privacidad: 'Privacidad',
+        ley: 'Ley aplicable',
+        contacto: 'Contacto'
+      };
+      toc.innerHTML = Array.from(sections).map(s => {
+        const id = s.id;
+        return `<a href="#${id}" class="toc-link">${titles[id] || s.querySelector('h2')?.textContent || id}</a>`;
+      }).join('');
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            document.querySelectorAll('.toc-link').forEach(l => l.classList.remove('active'));
+            const link = document.querySelector(`.toc-link[href="#${entry.target.id}"]`);
+            if (link) link.classList.add('active');
+          }
+        });
+      }, { rootMargin: '-30% 0px -50% 0px' });
+      sections.forEach(s => observer.observe(s));
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servicios · Huellitas Vet</title>
+  <meta name="description" content="Catálogo completo de servicios veterinarios: consultas, vacunación, cirugía, estética, análisis, emergencias y más." />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary: '#e07856', secondary: '#3fb8af', accent: '#f4c167' },
+          fontFamily: { display: ['Poppins'], sans: ['Nunito'] }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="services.html" class="bg-app text-gray-800 font-sans">
+  <div id="appHeader"></div>
+
+  <main class="pb-20">
+    <section class="hero-gradient py-16 md:py-20">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex chip chip-primary mb-4">Nuestros servicios</div>
+        <h1 class="text-4xl md:text-6xl font-bold font-display mb-4" style="color:var(--color-text);">Atención integral para tu mascota</h1>
+        <p class="text-lg text-muted max-w-2xl mx-auto">Cada servicio está diseñado para darle a tu mascota la mejor calidad de vida, con profesionales certificados y la tecnología más avanzada.</p>
+      </div>
+    </section>
+
+    <section class="container mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-10">
+      <div class="bg-card rounded-2xl shadow-lg p-4 md:p-6 border border-soft">
+        <div class="flex flex-wrap items-center gap-3">
+          <span class="text-sm font-bold text-muted uppercase tracking-wider">Filtrar:</span>
+          <button class="filter-chip active" data-cat="all">Todos</button>
+          <button class="filter-chip" data-cat="consulta">Consultas</button>
+          <button class="filter-chip" data-cat="cirugia">Cirugía</button>
+          <button class="filter-chip" data-cat="estetica">Estética</button>
+          <button class="filter-chip" data-cat="analisis">Análisis</button>
+          <button class="filter-chip" data-cat="odontologia">Odontología</button>
+          <button class="filter-chip" data-cat="emergencia">Emergencias</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div id="servicesList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </section>
+
+    <section class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-3xl p-8 md:p-12 text-white text-center" style="background: linear-gradient(135deg, #3fb8af 0%, #2d9890 100%);">
+        <h2 class="text-2xl md:text-4xl font-bold font-display mb-3">¿No encuentras lo que buscas?</h2>
+        <p class="opacity-90 mb-6">Contáctanos y te ayudamos a encontrar el servicio ideal para tu mascota.</p>
+        <a href="contact.html" class="inline-flex items-center gap-2 bg-white text-secondary-dark font-bold py-3 px-7 rounded-full hover:shadow-xl transition">
+          Escríbenos
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <div id="appFooter"></div>
+
+  <style>
+    .filter-chip {
+      padding: .5rem 1rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: .85rem;
+      cursor: pointer;
+      background: var(--color-bg-soft);
+      color: var(--color-text-muted);
+      border: 2px solid transparent;
+      transition: all .2s;
+      font-family: 'Poppins', sans-serif;
+    }
+    .filter-chip:hover {
+      background: rgba(224, 120, 86, .08);
+      color: var(--color-primary);
+    }
+    .filter-chip.active {
+      background: var(--color-primary);
+      color: #fff;
+      border-color: var(--color-primary);
+    }
+  </style>
+
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const list = document.getElementById('servicesList');
+      const chips = document.querySelectorAll('.filter-chip');
+      let currentCat = 'all';
+
+      function render(cat = 'all') {
+        const filtered = cat === 'all' ? SERVICIOS : SERVICIOS.filter(s => s.categoria === cat);
+        list.innerHTML = filtered.map(s => `
+          <article id="${s.id}" class="card overflow-hidden flex flex-col">
+            <div class="aspect-[16/10] overflow-hidden bg-soft relative">
+              <img src="${s.imagen}" class="w-full h-full object-cover hover:scale-110 transition duration-500" alt="${s.nombre}"/>
+              <span class="absolute top-3 left-3 chip chip-primary">${s.categoria}</span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <h3 class="font-bold font-display text-xl mb-2" style="color:var(--color-text);">${s.nombre}</h3>
+              <p class="text-sm text-muted leading-relaxed mb-5 flex-1">${s.descripcion}</p>
+              <div class="flex items-center justify-between pt-4 border-t border-soft">
+                <div>
+                  <p class="text-xs text-muted">Desde</p>
+                  <p class="text-xl font-bold font-display text-primary">${formatCurrency(s.precio)}</p>
+                </div>
+                <div class="text-right">
+                  <p class="text-xs text-muted">Duración</p>
+                  <p class="text-sm font-bold">${s.duracion} min</p>
+                </div>
+                <a href="booking.html?servicio=${s.id}" class="btn-primary text-xs" style="padding:.5rem .9rem;">
+                  Reservar
+                </a>
+              </div>
+            </div>
+          </article>
+        `).join('');
+      }
+
+      chips.forEach(c => {
+        c.addEventListener('click', () => {
+          chips.forEach(x => x.classList.remove('active'));
+          c.classList.add('active');
+          currentCat = c.dataset.cat;
+          render(currentCat);
+        });
+      });
+
+      render();
+    });
+  </script>
+</body>
+</html>

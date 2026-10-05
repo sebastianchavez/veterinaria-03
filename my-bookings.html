@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detalle de reserva · Huellitas Vet</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = { theme: { extend: { colors: { primary: '#e07856', secondary: '#3fb8af', accent: '#f4c167' }, fontFamily: { display: ['Poppins'], sans: ['Nunito'] } } } }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="my-bookings.html" class="bg-app text-gray-800 font-sans">
+  <div id="appHeader"></div>
+
+  <main class="pb-20">
+    <section class="container mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div id="contenido"></div>
+    </section>
+  </main>
+
+  <div id="appFooter"></div>
+
+  <script src="js/main.js"></script>
+  <script>
+    if (!Auth.requireAuth()) {}
+
+    const params = new URLSearchParams(location.search);
+    let id = params.get('id');
+    let r = id ? Reservas.get(id) : null;
+    const user = Auth.current();
+
+    function canCancel(r) {
+      if (r.estado === 'completada' || r.estado === 'anulada') return { ok: false, reason: 'Esta reserva no se puede anular.' };
+      const horas = diffHours(r.fecha, r.hora);
+      if (horas <= 0) return { ok: false, reason: 'Esta cita ya pasó.' };
+      if (horas < 24) return { ok: false, reason: 'Solo puedes anular con al menos 24 horas de anticipación.' };
+      return { ok: true };
+    }
+
+    function render() {
+      if (!r) {
+        document.getElementById('contenido').innerHTML = `
+          <div class="max-w-2xl mx-auto text-center card p-10">
+            <div class="text-5xl mb-4">🔍</div>
+            <h2 class="text-xl font-bold font-display mb-2">Reserva no encontrada</h2>
+            <p class="text-muted mb-6">No se encontró la reserva solicitada.</p>
+            <a href="profile.html" class="btn-primary">Ir a mi perfil</a>
+          </div>`;
+        return;
+      }
+
+      const s = SERVICIOS.find(x => x.id === r.servicioId);
+      const v = VETERINARIOS.find(x => x.id === r.vetId);
+      const m = Mascotas.get(r.mascotaId);
+      const metodoNombre = r.metodoPago ? Pagos.metodos.find(p => p.id === r.metodoPago) : null;
+      const cancelInfo = canCancel(r);
+      const horasRestantes = Math.max(0, diffHours(r.fecha, r.hora));
+
+      const estadoInfo = {
+        pendiente: { icon: '⏳', desc: 'Tu cita está reservada. Procede al pago para asegurarla.' },
+        confirmada: { icon: '✓', desc: 'Tu cita está confirmada. Te esperamos en la fecha acordada.' },
+        pagada: { icon: '💚', desc: 'Pago recibido y cita asegurada al 100%.' },
+        completada: { icon: '✅', desc: 'Esta cita ya fue atendida. ¡Gracias por confiar en nosotros!' },
+        anulada: { icon: '✕', desc: 'Esta cita fue anulada.' + (r.motivoAnulacion ? ' Motivo: ' + r.motivoAnulacion : '') }
+      }[r.estado];
+
+      document.getElementById('contenido').innerHTML = `
+        <div class="max-w-5xl mx-auto">
+          <a href="profile.html" class="inline-flex items-center gap-2 text-sm text-muted hover:text-primary font-semibold mb-5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            Volver a mis reservas
+          </a>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 space-y-6">
+              <div class="card overflow-hidden">
+                <div class="p-6 md:p-8 text-white" style="background: linear-gradient(135deg, #e07856 0%, #c95f3d 100%);">
+                  <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+                    <div>
+                      <p class="text-xs uppercase tracking-widest opacity-90 font-bold mb-1">Código de reserva</p>
+                      <h1 class="text-3xl font-bold font-display">${r.codigo}</h1>
+                    </div>
+                    ${UI.statusBadge(r.estado)}
+                  </div>
+                  <p class="opacity-90 flex items-center gap-2"><span class="text-xl">${estadoInfo.icon}</span> ${estadoInfo.desc}</p>
+                </div>
+                ${s ? `
+                  <div class="flex flex-wrap items-center gap-4 p-6 border-b border-soft">
+                    <img src="${s.imagen}" class="w-20 h-20 rounded-2xl object-cover" alt="${s.nombre}" />
+                    <div class="flex-1 min-w-0">
+                      <p class="text-xs uppercase tracking-wider text-muted font-bold">Servicio contratado</p>
+                      <h2 class="text-xl font-bold font-display" style="color:var(--color-text);">${s.nombre}</h2>
+                      <p class="text-sm text-muted">${s.duracion} min · Categoría ${s.categoria}</p>
+                    </div>
+                  </div>` : ''}
+                <div class="p-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <p class="text-xs uppercase tracking-wider text-muted font-bold mb-2">Fecha</p>
+                    <p class="font-bold text-lg font-display" style="color:var(--color-text);">${formatDate(r.fecha, { long: true })}</p>
+                  </div>
+                  <div>
+                    <p class="text-xs uppercase tracking-wider text-muted font-bold mb-2">Hora</p>
+                    <p class="font-bold text-lg font-display" style="color:var(--color-text);">${r.hora}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="card p-5">
+                  <p class="text-xs uppercase tracking-wider text-muted font-bold mb-3">Profesional asignado</p>
+                  ${v ? `
+                    <div class="flex items-center gap-3">
+                      <img src="${v.foto}" class="w-12 h-12 rounded-full object-cover" alt="${v.nombre}" />
+                      <div>
+                        <p class="font-bold" style="color:var(--color-text);">${v.nombre}</p>
+                        <p class="text-xs text-secondary font-semibold">${v.rol}</p>
+                        <p class="text-xs text-muted">${v.colegiatura}</p>
+                      </div>
+                    </div>` : '—'}
+                </div>
+                <div class="card p-5">
+                  <p class="text-xs uppercase tracking-wider text-muted font-bold mb-3">Paciente</p>
+                  ${m ? `
+                    <div class="flex items-center gap-3">
+                      <div class="pet-avatar">${UI.petEmoji(m.especie)}</div>
+                      <div>
+                        <p class="font-bold" style="color:var(--color-text);">${m.nombre}</p>
+                        <p class="text-xs text-muted">${m.raza || 'Sin raza'} · ${m.edad || '—'}</p>
+                        ${m.peso ? `<p class="text-xs text-muted">${m.peso}</p>` : ''}
+                      </div>
+                    </div>` : '—'}
+                </div>
+              </div>
+
+              ${r.notas ? `
+                <div class="card p-5">
+                  <p class="text-xs uppercase tracking-wider text-muted font-bold mb-2">Notas</p>
+                  <p class="text-sm leading-relaxed">${r.notas}</p>
+                </div>` : ''}
+
+              <div class="card p-5">
+                <p class="text-xs uppercase tracking-wider text-muted font-bold mb-2">Tutor</p>
+                <div class="flex items-center gap-3">
+                  <img src="${user.foto}" class="w-10 h-10 rounded-full object-cover" alt="${user.nombre}" />
+                  <div>
+                    <p class="font-bold" style="color:var(--color-text);">${user.nombre}</p>
+                    <p class="text-xs text-muted">${user.email} · ${user.telefono || '—'}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <aside class="space-y-5">
+              <div class="card p-6">
+                <h3 class="font-bold font-display text-lg mb-4 flex items-center gap-2" style="color:var(--color-text);">
+                  <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                  Resumen de pago
+                </h3>
+                <div class="space-y-2 text-sm">
+                  <div class="flex justify-between"><span class="text-muted">Servicio:</span><span class="font-bold">${formatCurrency(r.precio)}</span></div>
+                  ${metodoNombre ? `<div class="flex justify-between"><span class="text-muted">Pagado con:</span><span class="font-bold">${metodoNombre.icono} ${metodoNombre.nombre}</span></div>` : ''}
+                  ${r.pagado ? `<div class="flex justify-between text-secondary"><span class="text-sm">Estado:</span><span class="font-bold">✓ Pagado</span></div>` : `<div class="flex justify-between text-muted"><span>Estado:</span><span class="font-bold">Pendiente</span></div>`}
+                </div>
+                <div class="border-t border-soft pt-3 mt-3 flex justify-between items-center">
+                  <span class="font-bold" style="color:var(--color-text);">Total:</span>
+                  <span class="text-2xl font-bold font-display text-primary">${formatCurrency(r.precio)}</span>
+                </div>
+                ${!r.pagado && r.estado !== 'anulada' && r.estado !== 'completada' ? `
+                  <a href="payment.html?id=${r.id}" class="btn-primary w-full justify-center mt-5 text-sm">
+                    Pagar ahora
+                  </a>` : ''}
+              </div>
+
+              <div class="card p-6">
+                <h3 class="font-bold font-display text-lg mb-4">Acciones</h3>
+                <div class="space-y-2">
+                  ${cancelInfo.ok ? `
+                    <button id="btnAnular" class="btn-outline w-full justify-center text-sm" style="border-color: var(--color-danger); color: var(--color-danger);">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                      Anular reserva
+                    </button>
+                    <p class="text-xs text-muted text-center">Faltan ${Math.round(horasRestantes)}h para tu cita</p>
+                  ` : `<p class="text-xs text-muted text-center p-2 bg-soft rounded-lg">${cancelInfo.reason}</p>`}
+                  <a href="booking.html" class="btn-ghost w-full justify-center text-sm">+ Nueva reserva</a>
+                </div>
+              </div>
+
+              <div class="card p-5 bg-soft border-soft">
+                <div class="flex items-start gap-3">
+                  <div class="w-10 h-10 rounded-2xl bg-secondary/15 flex items-center justify-center text-secondary flex-shrink-0">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  </div>
+                  <div>
+                    <p class="text-xs font-bold mb-1" style="color:var(--color-text);">¿Necesitas ayuda?</p>
+                    <p class="text-xs text-muted leading-relaxed">Contáctanos al +51 999 888 777 o por WhatsApp para modificar tu reserva.</p>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>`;
+
+      const btnAnular = document.getElementById('btnAnular');
+      if (btnAnular) {
+        btnAnular.addEventListener('click', () => {
+          const back = document.createElement('div');
+          back.className = 'modal-backdrop';
+          back.innerHTML = `
+            <div class="modal-content">
+              <h3 class="font-display font-bold text-xl mb-3" style="color:var(--color-text);">¿Anular reserva?</h3>
+              <p class="text-sm text-muted mb-4 leading-relaxed">Si anulas con más de 24h de anticipación, te devolvemos el 100% del pago.</p>
+              <label class="label-text">Motivo (opcional)</label>
+              <textarea id="motivoAnul" class="input-field mb-4" rows="3" placeholder="Cuéntanos por qué anulas..."></textarea>
+              <div class="flex justify-end gap-2">
+                <button class="btn-ghost" id="cancelAnul">No, mantener</button>
+                <button class="btn-primary" style="background: var(--color-danger);" id="confirmAnul">Sí, anular</button>
+              </div>
+            </div>`;
+          document.body.appendChild(back);
+          const close = () => back.remove();
+          document.getElementById('cancelAnul').addEventListener('click', close);
+          document.getElementById('confirmAnul').addEventListener('click', () => {
+            const motivo = document.getElementById('motivoAnul').value.trim();
+            const res = Reservas.cancel(r.id, motivo);
+            if (res.ok) {
+              UI.toast('Reserva anulada correctamente', 'success');
+              setTimeout(() => location.reload(), 800);
+            } else {
+              UI.toast(res.error, 'error');
+            }
+            close();
+          });
+        });
+      }
+    }
+
+    if (id) {
+      const found = Reservas.get(id);
+      if (found && found.userId === Auth.current().id) {
+        r = found;
+      }
+    } else {
+      const userId = Auth.current().id;
+      const last = Reservas.list(userId).sort((a, b) => new Date(b.fecha) - new Date(a.fecha))[0];
+      if (last) {
+        r = last;
+        history.replaceState(null, '', 'my-bookings.html?id=' + last.id);
+      }
+    }
+
+    render();
+  </script>
+</body>
+</html>

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reservar cita · Huellitas Vet</title>
+  <meta name="description" content="Agenda la cita para tu mascota en 5 simples pasos." />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { primary: '#e07856', secondary: '#3fb8af', accent: '#f4c167' }, fontFamily: { display: ['Poppins'], sans: ['Nunito'] } } }
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="booking.html" class="bg-app text-gray-800 font-sans">
+  <div id="appHeader"></div>
+
+  <main class="pb-20">
+    <section class="container mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+      <div class="text-center mb-10">
+        <div class="inline-flex chip chip-primary mb-3">Agenda una cita</div>
+        <h1 class="text-4xl md:text-5xl font-bold font-display mb-3" style="color:var(--color-text);">Reservar cita</h1>
+        <p class="text-muted">Completa los 5 pasos y recibe el comprobante al finalizar</p>
+      </div>
+
+      <div class="max-w-3xl mx-auto mb-10">
+        <div class="flex items-center justify-between gap-1">
+          <div class="flex flex-col items-center flex-1">
+            <div id="dot1" class="step-dot w-11 h-11 rounded-full flex items-center justify-center text-sm font-bold font-display">1</div>
+            <span class="text-xs mt-2 font-semibold text-center">Servicio</span>
+          </div>
+          <div id="line1" class="step-line mb-6"></div>
+          <div class="flex flex-col items-center flex-1">
+            <div id="dot2" class="step-dot w-11 h-11 rounded-full flex items-center justify-center text-sm font-bold font-display">2</div>
+            <span class="text-xs mt-2 font-semibold text-center">Profesional</span>
+          </div>
+          <div id="line2" class="step-line mb-6"></div>
+          <div class="flex flex-col items-center flex-1">
+            <div id="dot3" class="step-dot w-11 h-11 rounded-full flex items-center justify-center text-sm font-bold font-display">3</div>
+            <span class="text-xs mt-2 font-semibold text-center">Mascota</span>
+          </div>
+          <div id="line3" class="step-line mb-6"></div>
+          <div class="flex flex-col items-center flex-1">
+            <div id="dot4" class="step-dot w-11 h-11 rounded-full flex items-center justify-center text-sm font-bold font-display">4</div>
+            <span class="text-xs mt-2 font-semibold text-center">Fecha y hora</span>
+          </div>
+          <div id="line4" class="step-line mb-6"></div>
+          <div class="flex flex-col items-center flex-1">
+            <div id="dot5" class="step-dot w-11 h-11 rounded-full flex items-center justify-center text-sm font-bold font-display">5</div>
+            <span class="text-xs mt-2 font-semibold text-center">Confirmar</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2">
+          <div id="stepPanel" class="card-flat p-6 md:p-8"></div>
+
+          <div class="flex flex-wrap items-center justify-between gap-3 mt-6">
+            <button id="btnPrev" class="btn-ghost" style="border:2px solid var(--color-border);">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+              Anterior
+            </button>
+            <div class="text-sm text-muted">Paso <span id="currentStep">1</span> de 5</div>
+            <button id="btnNext" class="btn-primary">
+              Siguiente
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <aside class="lg:col-span-1">
+          <div class="card p-6 lg:sticky lg:top-28">
+            <h3 class="text-lg font-bold font-display mb-4 flex items-center gap-2" style="color:var(--color-text);">
+              <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+              Resumen
+            </h3>
+            <div class="space-y-3 text-sm">
+              <div class="flex justify-between gap-2"><span class="text-muted">Servicio:</span><span id="r-servicio" class="font-bold text-right">—</span></div>
+              <div class="flex justify-between gap-2"><span class="text-muted">Profesional:</span><span id="r-prof" class="font-bold text-right">—</span></div>
+              <div class="flex justify-between gap-2"><span class="text-muted">Mascota:</span><span id="r-mascota" class="font-bold text-right">—</span></div>
+              <div class="flex justify-between gap-2"><span class="text-muted">Fecha:</span><span id="r-fecha" class="font-bold text-right">—</span></div>
+              <div class="flex justify-between gap-2"><span class="text-muted">Hora:</span><span id="r-hora" class="font-bold text-right">—</span></div>
+              <div class="border-t border-soft pt-3 mt-3 flex justify-between text-base items-center">
+                <span class="font-bold" style="color:var(--color-text);">Total:</span>
+                <span id="r-precio" class="text-primary text-2xl font-bold font-display">S/ 0.00</span>
+              </div>
+            </div>
+            <div class="mt-5 p-4 bg-soft rounded-xl">
+              <p class="text-xs text-muted leading-relaxed">
+                <strong class="text-primary">💡 Política de cancelación:</strong> Puedes anular tu cita sin costo hasta 24 horas antes.
+              </p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <div id="appFooter"></div>
+
+  <script src="js/main.js"></script>
+  <script>
+    if (!Auth.requireAuth()) {}
+
+    let step = 1;
+    let draft = ReservasDraft.get() || {};
+
+    const params = new URLSearchParams(location.search);
+    if (params.get('servicio')) draft.servicioId = params.get('servicio');
+
+    function saveDraft() { ReservasDraft.set(draft); }
+
+    const titulos = {
+      1: { titulo: 'Selecciona el servicio', sub: '¿Qué necesita tu mascota hoy?' },
+      2: { titulo: 'Elige un profesional', sub: 'Nuestros especialistas están listos para ayudarte' },
+      3: { titulo: '¿Para quién es la reserva?', sub: 'Selecciona la mascota o añade una nueva' },
+      4: { titulo: 'Fecha y hora', sub: 'Encuentra el horario que mejor te funcione' },
+      5: { titulo: 'Confirma tu cita', sub: 'Revisa los detalles y procede al pago' }
+    };
+
+    function updateResumen() {
+      const s = draft.servicioId ? SERVICIOS.find(x => x.id === draft.servicioId) : null;
+      const v = draft.vetId ? VETERINARIOS.find(x => x.id === draft.vetId) : null;
+      const m = draft.mascotaId ? Mascotas.get(draft.mascotaId) : null;
+      document.getElementById('r-servicio').textContent = s ? s.nombre : '—';
+      document.getElementById('r-prof').textContent = v ? v.nombre : '—';
+      document.getElementById('r-mascota').textContent = m ? `${m.nombre} (${UI.petEmoji(m.especie)})` : '—';
+      document.getElementById('r-fecha').textContent = draft.fecha ? formatDate(draft.fecha, { long: true }) : '—';
+      document.getElementById('r-hora').textContent = draft.hora || '—';
+      document.getElementById('r-precio').textContent = s ? formatCurrency(s.precio) : 'S/ 0.00';
+    }
+
+    function updateStepper() {
+      for (let i = 1; i <= 5; i++) {
+        const dot = document.getElementById('dot' + i);
+        dot.classList.remove('active', 'completed');
+        if (i < step) dot.classList.add('completed');
+        else if (i === step) dot.classList.add('active');
+      }
+      for (let i = 1; i <= 4; i++) {
+        const line = document.getElementById('line' + i);
+        line.classList.remove('active', 'completed');
+        if (i < step) line.classList.add('completed');
+        else if (i === step) line.classList.add('active');
+      }
+      document.getElementById('currentStep').textContent = step;
+      document.getElementById('btnPrev').style.visibility = step === 1 ? 'hidden' : 'visible';
+      document.getElementById('btnNext').textContent = step === 5 ? 'Confirmar y pagar' : 'Siguiente';
+      if (step === 5) {
+        document.getElementById('btnNext').innerHTML = `
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+          Confirmar y pagar`;
+      } else {
+        document.getElementById('btnNext').innerHTML = `Siguiente <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>`;
+      }
+    }
+
+    function renderStep() {
+      const panel = document.getElementById('stepPanel');
+      const t = titulos[step];
+      let html = `<div class="mb-6"><h2 class="text-2xl font-bold font-display" style="color:var(--color-text);">${t.titulo}</h2><p class="text-muted mt-1">${t.sub}</p></div>`;
+
+      if (step === 1) {
+        html += `<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">`;
+        SERVICIOS.forEach(s => {
+          const sel = draft.servicioId === s.id ? 'selected' : '';
+          html += `
+            <button data-id="${s.id}" class="service-card text-left p-4 border-2 border-soft rounded-xl flex gap-4 items-center hover:border-primary transition ${sel}">
+              <img src="${s.imagen}" class="w-16 h-16 rounded-xl object-cover flex-shrink-0" alt="${s.nombre}" />
+              <div class="flex-1 min-w-0">
+                <p class="font-bold font-display" style="color:var(--color-text);">${s.nombre}</p>
+                <p class="text-xs text-muted line-clamp-2 mb-1">${s.descripcion}</p>
+                <div class="flex items-center gap-2 text-xs">
+                  <span class="chip chip-primary" style="font-size:.65rem;">${s.categoria}</span>
+                  <span class="text-muted">${s.duracion} min</span>
+                </div>
+              </div>
+              <div class="text-right flex-shrink-0">
+                <p class="text-lg font-bold font-display text-primary">${formatCurrency(s.precio)}</p>
+              </div>
+            </button>`;
+        });
+        html += `</div>`;
+      } else if (step === 2) {
+        const svc = SERVICIOS.find(s => s.id === draft.servicioId);
+        const list = svc ? VETERINARIOS.filter(v => v.especialidades.includes(svc.id)) : VETERINARIOS;
+        html += `<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">`;
+        list.forEach(v => {
+          const sel = draft.vetId === v.id ? 'selected' : '';
+          html += `
+            <button data-id="${v.id}" class="vet-card text-left p-5 border-2 border-soft rounded-xl hover:border-secondary transition ${sel}">
+              <div class="flex items-center gap-3 mb-3">
+                <img src="${v.foto}" class="w-14 h-14 rounded-full object-cover" alt="${v.nombre}" />
+                <div class="flex-1 min-w-0">
+                  <p class="font-bold font-display" style="color:var(--color-text);">${v.nombre}</p>
+                  <p class="text-xs text-secondary font-semibold">${v.rol}</p>
+                </div>
+              </div>
+              <p class="text-xs text-muted mb-2 line-clamp-2">${v.bio}</p>
+              <div class="flex items-center justify-between text-xs">
+                <span class="text-muted">${v.experiencia} exp.</span>
+                <span class="flex items-center gap-1 font-bold" style="color:var(--color-accent);">★ ${v.rating}</span>
+              </div>
+            </button>`;
+        });
+        if (list.length === 0) html += `<p class="text-muted text-sm">No hay especialistas para este servicio.</p>`;
+        html += `</div>`;
+      } else if (step === 3) {
+        const user = Auth.current();
+        const mascotas = user ? Mascotas.list(user.id) : [];
+        html += `<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">`;
+        mascotas.forEach(m => {
+          const sel = draft.mascotaId === m.id ? 'selected' : '';
+          html += `
+            <button data-id="${m.id}" class="pet-card text-left p-4 border-2 border-soft rounded-xl flex items-center gap-4 hover:border-accent transition ${sel}">
+              <div class="pet-avatar">${UI.petEmoji(m.especie)}</div>
+              <div class="flex-1 min-w-0">
+                <p class="font-bold font-display" style="color:var(--color-text);">${m.nombre}</p>
+                <p class="text-xs text-muted">${m.raza || 'Sin raza'} · ${m.edad || '—'}</p>
+              </div>
+            </button>`;
+        });
+        html += `</div>`;
+        html += `
+          <div class="card-flat p-5 border-2 border-dashed border-soft">
+            <h4 class="font-bold font-display mb-3" style="color:var(--color-text);">¿Tu mascota no está registrada?</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+              <input id="newPetName" placeholder="Nombre" class="input-field text-sm" />
+              <select id="newPetEspecie" class="input-field text-sm">
+                ${ESPECIES.map(e => `<option value="${e.id}">${e.icon} ${e.label}</option>`).join('')}
+              </select>
+              <input id="newPetRaza" placeholder="Raza" class="input-field text-sm" />
+              <input id="newPetEdad" placeholder="Edad (ej. 2 años)" class="input-field text-sm" />
+            </div>
+            <button id="btnAddPet" class="btn-outline text-sm">+ Agregar mascota</button>
+          </div>`;
+      } else if (step === 4) {
+        const today = new Date();
+        const minDate = new Date(); minDate.setDate(today.getDate() + 1);
+        html += `
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="label-text">Selecciona la fecha</label>
+              <input type="date" id="inputFecha" min="${minDate.toISOString().slice(0,10)}" value="${draft.fecha || ''}" class="input-field" />
+              <p class="text-xs text-muted mt-2">Mínimo con 1 día de anticipación</p>
+            </div>
+            <div>
+              <label class="label-text">Horarios disponibles</label>
+              <div id="slotsBox" class="grid grid-cols-3 sm:grid-cols-4 gap-2 mt-1">
+                <p class="text-sm text-muted col-span-full">Selecciona una fecha primero</p>
+              </div>
+            </div>
+          </div>`;
+      } else if (step === 5) {
+        const s = SERVICIOS.find(x => x.id === draft.servicioId);
+        const v = VETERINARIOS.find(x => x.id === draft.vetId);
+        const m = Mascotas.get(draft.mascotaId);
+        const user = Auth.current();
+        html += `
+          <div class="space-y-4">
+            <div class="card-flat p-5 border border-soft">
+              <h4 class="text-xs uppercase tracking-wider text-muted font-bold mb-3">Datos del tutor</h4>
+              <div class="flex items-center gap-4">
+                <img src="${user.foto}" class="w-12 h-12 rounded-full object-cover" />
+                <div>
+                  <p class="font-bold font-display" style="color:var(--color-text);">${user.nombre}</p>
+                  <p class="text-sm text-muted">${user.email}</p>
+                </div>
+              </div>
+            </div>
+            <div class="card-flat p-5 border border-soft">
+              <h4 class="text-xs uppercase tracking-wider text-muted font-bold mb-3">Detalles de la cita</h4>
+              <div class="space-y-3">
+                <div class="flex justify-between"><span class="text-muted">Servicio:</span><span class="font-bold">${s ? s.nombre : '—'}</span></div>
+                <div class="flex justify-between"><span class="text-muted">Profesional:</span><span class="font-bold">${v ? v.nombre : '—'}</span></div>
+                <div class="flex justify-between"><span class="text-muted">Mascota:</span><span class="font-bold">${m ? `${m.nombre} (${UI.petEmoji(m.especie)})` : '—'}</span></div>
+                <div class="flex justify-between"><span class="text-muted">Fecha:</span><span class="font-bold">${draft.fecha ? formatDate(draft.fecha, { long: true }) : '—'}</span></div>
+                <div class="flex justify-between"><span class="text-muted">Hora:</span><span class="font-bold">${draft.hora || '—'}</span></div>
+                <div class="border-t border-soft pt-3 mt-3 flex justify-between">
+                  <span class="font-bold" style="color:var(--color-text);">Total a pagar:</span>
+                  <span class="text-2xl font-bold font-display text-primary">${s ? formatCurrency(s.precio) : '—'}</span>
+                </div>
+              </div>
+            </div>
+            <label class="flex items-start gap-2 text-sm text-muted">
+              <input type="checkbox" id="acceptTerms" class="mt-1 w-4 h-4 accent-primary" />
+              <span>Acepto los <a href="terms.html" class="text-primary font-bold hover:underline" target="_blank">términos y condiciones</a> y la <a href="privacy.html" class="text-primary font-bold hover:underline" target="_blank">política de privacidad</a>.</span>
+            </label>
+          </div>`;
+      }
+
+      panel.innerHTML = html;
+      bindStepEvents();
+      updateStepper();
+    }
+
+    function bindStepEvents() {
+      if (step === 1) {
+        document.querySelectorAll('.service-card').forEach(el => {
+          el.addEventListener('click', () => {
+            draft.servicioId = el.dataset.id;
+            draft.vetId = null;
+            saveDraft();
+            renderStep();
+            updateResumen();
+          });
+        });
+      } else if (step === 2) {
+        document.querySelectorAll('.vet-card').forEach(el => {
+          el.addEventListener('click', () => {
+            draft.vetId = el.dataset.id;
+            saveDraft();
+            renderStep();
+            updateResumen();
+          });
+        });
+      } else if (step === 3) {
+        document.querySelectorAll('.pet-card').forEach(el => {
+          el.addEventListener('click', () => {
+            draft.mascotaId = el.dataset.id;
+            saveDraft();
+            renderStep();
+            updateResumen();
+          });
+        });
+        const btnAdd = document.getElementById('btnAddPet');
+        if (btnAdd) {
+          btnAdd.addEventListener('click', () => {
+            const nombre = document.getElementById('newPetName').value.trim();
+            const especie = document.getElementById('newPetEspecie').value;
+            const raza = document.getElementById('newPetRaza').value.trim();
+            const edad = document.getElementById('newPetEdad').value.trim();
+            if (!nombre) { UI.toast('Ingresa el nombre de la mascota', 'error'); return; }
+            const user = Auth.current();
+            const newPet = Mascotas.create({ userId: user.id, nombre, especie, raza, edad, peso: '', sexo: '', notas: '' });
+            draft.mascotaId = newPet.id;
+            saveDraft();
+            UI.toast('Mascota agregada correctamente', 'success');
+            renderStep();
+            updateResumen();
+          });
+        }
+      } else if (step === 4) {
+        const inputFecha = document.getElementById('inputFecha');
+        const slotsBox = document.getElementById('slotsBox');
+        const renderSlots = () => {
+          if (!inputFecha.value) { slotsBox.innerHTML = '<p class="text-sm text-muted col-span-full">Selecciona una fecha primero</p>'; return; }
+          draft.fecha = inputFecha.value;
+          draft.hora = null;
+          saveDraft();
+          const slots = Reservas.timeSlotsFor(inputFecha.value);
+          if (slots.length === 0) {
+            slotsBox.innerHTML = '<p class="text-sm text-muted col-span-full">No hay horarios disponibles este día.</p>';
+            return;
+          }
+          slotsBox.innerHTML = slots.map(s => {
+            const taken = Reservas.isSlotTaken(inputFecha.value, s, draft.vetId);
+            const sel = draft.hora === s ? 'selected' : '';
+            return `<button class="time-slot ${sel}" data-h="${s}" ${taken ? 'disabled' : ''}>${s}</button>`;
+          }).join('');
+          slotsBox.querySelectorAll('.time-slot').forEach(b => {
+            if (b.disabled) return;
+            b.addEventListener('click', () => {
+              slotsBox.querySelectorAll('.time-slot').forEach(x => x.classList.remove('selected'));
+              b.classList.add('selected');
+              draft.hora = b.dataset.h;
+              saveDraft();
+              updateResumen();
+            });
+          });
+        };
+        inputFecha.addEventListener('change', renderSlots);
+        if (draft.fecha && draft.hora) renderSlots();
+      }
+    }
+
+    function validateStep() {
+      if (step === 1 && !draft.servicioId) { UI.toast('Selecciona un servicio', 'warning'); return false; }
+      if (step === 2 && !draft.vetId) { UI.toast('Selecciona un profesional', 'warning'); return false; }
+      if (step === 3 && !draft.mascotaId) { UI.toast('Selecciona una mascota', 'warning'); return false; }
+      if (step === 4) {
+        if (!draft.fecha) { UI.toast('Selecciona una fecha', 'warning'); return false; }
+        if (!draft.hora) { UI.toast('Selecciona una hora', 'warning'); return false; }
+      }
+      if (step === 5) {
+        const chk = document.getElementById('acceptTerms');
+        if (!chk || !chk.checked) { UI.toast('Debes aceptar los términos y condiciones', 'warning'); return false; }
+      }
+      return true;
+    }
+
+    function next() {
+      if (!validateStep()) return;
+      if (step === 5) {
+        const user = Auth.current();
+        const svc = SERVICIOS.find(s => s.id === draft.servicioId);
+        const newReserva = Reservas.create({
+          userId: user.id,
+          servicioId: draft.servicioId,
+          vetId: draft.vetId,
+          mascotaId: draft.mascotaId,
+          fecha: draft.fecha,
+          hora: draft.hora,
+          precio: svc.precio,
+          estado: 'pendiente',
+          pagado: false,
+          metodoPago: null,
+          notas: ''
+        });
+        PagoDraft.set({ reservaId: newReserva.id });
+        ReservasDraft.clear();
+        location.href = 'payment.html?id=' + newReserva.id;
+        return;
+      }
+      step++;
+      renderStep();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function prev() {
+      if (step === 1) return;
+      step--;
+      renderStep();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.getElementById('btnPrev').addEventListener('click', prev);
+    document.getElementById('btnNext').addEventListener('click', next);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updateResumen();
+      renderStep();
+    });
+  </script>
+</body>
+</html>

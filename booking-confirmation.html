@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Confirmación · Huellitas Vet</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = { theme: { extend: { colors: { primary: '#e07856', secondary: '#3fb8af', accent: '#f4c167' }, fontFamily: { display: ['Poppins'], sans: ['Nunito'] } } } }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="booking-confirmation.html" class="bg-app text-gray-800 font-sans">
+  <div id="appHeader"></div>
+
+  <main class="pb-20">
+    <section class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-10 fade-in">
+          <div class="checkmark-circle mx-auto mb-5">
+            <div class="background"></div>
+            <div class="checkmark"></div>
+          </div>
+          <div class="inline-flex chip chip-secondary mb-3">¡Cita agendada!</div>
+          <h1 class="text-3xl md:text-5xl font-bold font-display mb-3" style="color:var(--color-text);">Tu reserva está confirmada</h1>
+          <p class="text-muted">Hemos enviado los detalles a tu correo. Ahora puedes proceder al pago para confirmar el cupo.</p>
+        </div>
+
+        <div id="resumenCard" class="card p-8 mb-6"></div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+          <a href="payment.html" id="btnPagar" class="btn-primary w-full justify-center">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+            Ir a pagar
+          </a>
+          <a href="profile.html" class="btn-outline w-full justify-center">Ver mis reservas</a>
+        </div>
+
+        <div class="card p-6">
+          <h3 class="font-bold font-display text-lg mb-4">Próximos pasos</h3>
+          <ol class="space-y-3 text-sm">
+            <li class="flex gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center">1</span><span><strong class="text-gray-800">Realiza el pago</strong> para confirmar definitivamente tu cita.</span></li>
+            <li class="flex gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-secondary text-white text-xs font-bold flex items-center justify-center">2</span><span><strong class="text-gray-800">Recibe la confirmación</strong> con todos los datos del especialista y la ubicación.</span></li>
+            <li class="flex gap-3"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-accent text-white text-xs font-bold flex items-center justify-center">3</span><span><strong class="text-gray-800">Llega 10 minutos antes</strong> para completar la admisión de tu mascota.</span></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="appFooter"></div>
+
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(location.search);
+      const id = params.get('id') || (PagoDraft.get() && PagoDraft.get().reservaId);
+      const r = id ? Reservas.get(id) : null;
+      if (!r) {
+        document.getElementById('resumenCard').innerHTML = '<p class="text-muted">No se encontró la cita.</p>';
+        document.getElementById('btnPagar').style.display = 'none';
+        return;
+      }
+      const s = SERVICIOS.find(x => x.id === r.servicioId);
+      const v = VETERINARIOS.find(x => x.id === r.vetId);
+      const m = Mascotas.get(r.mascotaId);
+      const user = Auth.current();
+
+      document.getElementById('resumenCard').innerHTML = `
+        <div class="text-center mb-6 pb-6 border-b border-soft">
+          <p class="text-xs uppercase tracking-widest text-muted font-bold mb-2">Código de reserva</p>
+          <p class="text-3xl font-bold font-display text-primary">${r.codigo}</p>
+          ${UI.statusBadge(r.estado)}
+        </div>
+        <div class="space-y-4 text-sm">
+          <div class="flex justify-between"><span class="text-muted">Servicio:</span><span class="font-bold">${s ? s.nombre : '—'}</span></div>
+          <div class="flex justify-between"><span class="text-muted">Profesional:</span><span class="font-bold">${v ? v.nombre : '—'}</span></div>
+          <div class="flex justify-between"><span class="text-muted">Mascota:</span><span class="font-bold">${m ? `${m.nombre} (${UI.petEmoji(m.especie)})` : '—'}</span></div>
+          <div class="flex justify-between"><span class="text-muted">Fecha:</span><span class="font-bold">${formatDate(r.fecha, { long: true })}</span></div>
+          <div class="flex justify-between"><span class="text-muted">Hora:</span><span class="font-bold">${r.hora}</span></div>
+          <div class="flex justify-between"><span class="text-muted">Duración:</span><span class="font-bold">${s ? s.duracion + ' min' : '—'}</span></div>
+        </div>
+        <div class="mt-6 pt-6 border-t border-soft flex items-center justify-between">
+          <span class="font-bold" style="color:var(--color-text);">Total a pagar:</span>
+          <span class="text-2xl font-bold font-display text-primary">${formatCurrency(r.precio)}</span>
+        </div>`;
+    });
+  </script>
+</body>
+</html>

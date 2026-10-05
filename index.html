@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Huellitas Vet · Atención veterinaria integral y cariñosa</title>
+  <meta name="description" content="Clínica veterinaria con atención 24/7, especialistas, estética y emergencias. Reserva tu cita online en minutos." />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#e07856',
+            'primary-dark': '#c95f3d',
+            secondary: '#3fb8af',
+            'secondary-dark': '#2d9890',
+            accent: '#f4c167'
+          },
+          fontFamily: {
+            display: ['Poppins'],
+            sans: ['Nunito']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="index.html" class="bg-app text-gray-800 font-sans">
+  <div id="appHeader"></div>
+
+  <main>
+    <section class="relative overflow-hidden hero-gradient pt-12 pb-20 md:pt-20 md:pb-32">
+      <div class="blob-primary w-96 h-96 -top-20 -left-20"></div>
+      <div class="blob-secondary w-80 h-80 top-1/2 -translate-y-1/2 right-0"></div>
+
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div class="fade-in">
+            <div class="inline-flex items-center gap-2 chip chip-secondary mb-6">
+              <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+              Atención 24/7 · Emergencias
+            </div>
+            <h1 class="font-display font-extrabold leading-[1.05] mb-6" style="font-size: clamp(2.4rem, 5.5vw, 4.5rem); color: var(--color-text);">
+              Cuidamos a quienes <span class="text-primary">más quieres</span>
+            </h1>
+            <p class="text-lg md:text-xl text-muted leading-relaxed max-w-xl mb-8">
+              Atención veterinaria integral con calidez humana, tecnología de vanguardia y un equipo apasionado por el bienestar de tu mascota.
+            </p>
+            <div class="flex flex-wrap gap-3 mb-10">
+              <a href="booking.html" class="btn-primary text-base">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                Reservar cita
+              </a>
+              <a href="services.html" class="btn-outline text-base">Ver servicios</a>
+            </div>
+            <div class="flex flex-wrap gap-6 md:gap-10 text-sm">
+              <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center">
+                  <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                </div>
+                <span class="font-semibold">Protocolos seguros</span>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-full bg-secondary/10 flex items-center justify-center">
+                  <svg class="w-4 h-4 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <span class="font-semibold">Reserva online</span>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-full bg-accent/15 flex items-center justify-center">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color:#b45309"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                </div>
+                <span class="font-semibold">Pagos flexibles</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative fade-in">
+            <div class="absolute -inset-4 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl blur-2xl"></div>
+            <div class="relative grid grid-cols-2 gap-4">
+              <div class="space-y-4">
+                <img src="https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?w=400&q=80" class="w-full h-56 rounded-2xl object-cover shadow-lg float-soft" alt="Veterinaria con perro" />
+                <img src="https://images.unsplash.com/photo-1591946614720-90a587da4a36?w=400&q=80" class="w-full h-40 rounded-2xl object-cover shadow-lg" alt="Grooming" />
+              </div>
+              <div class="space-y-4 pt-8">
+                <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=400&q=80" class="w-full h-40 rounded-2xl object-cover shadow-lg" alt="Perro feliz" />
+                <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400&q=80" class="w-full h-56 rounded-2xl object-cover shadow-lg float-soft" alt="Gato en consulta" />
+              </div>
+            </div>
+            <div class="absolute -bottom-6 -left-6 bg-card p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-soft">
+              <div class="flex -space-x-2">
+                <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold border-2 border-white">S</div>
+                <div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-white font-bold border-2 border-white">C</div>
+                <div class="w-10 h-10 rounded-full bg-accent flex items-center justify-center text-white font-bold border-2 border-white">A</div>
+              </div>
+              <div>
+                <div class="flex items-center gap-1">★★★★★ <span class="text-xs text-muted ml-1">(500+)</span></div>
+                <p class="text-xs font-semibold text-muted">Familias felices</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-card">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div class="text-center">
+            <div class="text-3xl md:text-4xl font-bold font-display text-primary mb-1">15+</div>
+            <div class="text-xs uppercase tracking-wider text-muted font-semibold">Años de experiencia</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl md:text-4xl font-bold font-display text-secondary mb-1">12K+</div>
+            <div class="text-xs uppercase tracking-wider text-muted font-semibold">Mascotas atendidas</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl md:text-4xl font-bold font-display text-primary mb-1">4</div>
+            <div class="text-xs uppercase tracking-wider text-muted font-semibold">Especialistas</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl md:text-4xl font-bold font-display text-secondary mb-1">24/7</div>
+            <div class="text-xs uppercase tracking-wider text-muted font-semibold">Emergencias</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-app">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-14">
+          <div class="inline-flex chip chip-primary mb-3">Servicios destacados</div>
+          <h2 class="text-3xl md:text-5xl font-bold font-display mb-4" style="color:var(--color-text);">Cuidamos cada detalle de su bienestar</h2>
+          <p class="text-muted max-w-2xl mx-auto">Desde chequeos preventivos hasta cirugías especializadas, ofrecemos atención integral para todas las etapas de vida de tu mascota.</p>
+        </div>
+        <div id="servicesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+        <div class="text-center mt-12">
+          <a href="services.html" class="btn-outline">Ver todos los servicios</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 soft-gradient">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div class="order-2 lg:order-1">
+            <div class="inline-flex chip chip-secondary mb-3">Sobre nosotros</div>
+            <h2 class="text-3xl md:text-5xl font-bold font-display mb-6" style="color:var(--color-text);">Una clínica diseñada pensando en tu mascota</h2>
+            <p class="text-muted leading-relaxed mb-5">En <span class="text-primary font-bold">Huellitas Vet</span> combinamos la calidez de un equipo cercano con la precisión de la tecnología más moderna en medicina veterinaria.</p>
+            <p class="text-muted leading-relaxed mb-8">Cada mascota es única, y por eso cada plan de atención también lo es. Tratamientos personalizados, indoloros y de resultados duraderos.</p>
+            <div class="grid grid-cols-3 gap-6 mb-8">
+              <div class="p-4 rounded-2xl bg-primary/5 border border-primary/15">
+                <div class="text-3xl mb-1">🩺</div>
+                <p class="font-bold text-sm">Medicina preventiva</p>
+              </div>
+              <div class="p-4 rounded-2xl bg-secondary/5 border border-secondary/15">
+                <div class="text-3xl mb-1">🦴</div>
+                <p class="font-bold text-sm">Cirugía láser</p>
+              </div>
+              <div class="p-4 rounded-2xl bg-accent/15 border border-accent/20" >
+                <div class="text-3xl mb-1">✨</div>
+                <p class="font-bold text-sm">Spa & grooming</p>
+              </div>
+            </div>
+            <a href="contact.html" class="btn-primary">Conócenos</a>
+          </div>
+          <div class="order-1 lg:order-2 relative">
+            <img src="https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?w=900&q=80" class="rounded-3xl shadow-xl" alt="Equipo veterinario" />
+            <div class="absolute -bottom-6 -right-6 bg-secondary text-white p-6 rounded-2xl shadow-xl max-w-[200px]">
+              <div class="text-4xl font-bold font-display mb-1">+98%</div>
+              <p class="text-xs font-semibold opacity-90">Satisfacción de nuestros clientes</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-app">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-14">
+          <div class="inline-flex chip chip-primary mb-3">Nuestro equipo</div>
+          <h2 class="text-3xl md:text-5xl font-bold font-display mb-4" style="color:var(--color-text);">Especialistas que aman su trabajo</h2>
+        </div>
+        <div id="vetsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-card">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-14">
+          <div class="inline-flex chip chip-secondary mb-3">Testimonios</div>
+          <h2 class="text-3xl md:text-5xl font-bold font-display" style="color:var(--color-text);">Lo que dicen las familias felices</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="card p-7">
+              <div class="flex items-center gap-1 mb-4" style="color:var(--color-accent)">★★★★★</div>
+              <p class="text-gray-700 leading-relaxed mb-5">"Llevo a mi golden Max desde cachorro. La atención de la Dra. Sofía es excepcional, siempre explica todo con paciencia. El sistema de reservas online me ahorra muchísimo tiempo."</p>
+              <div class="flex items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" class="w-12 h-12 rounded-full object-cover" />
+                <div>
+                  <p class="font-bold text-sm">Carla Mendoza</p>
+                  <p class="text-xs text-muted">Tutora de Max · 4 años</p>
+                </div>
+              </div>
+            </div>
+            <div class="card p-7">
+              <div class="flex items-center gap-1 mb-4" style="color:var(--color-accent)">★★★★★</div>
+              <p class="text-gray-700 leading-relaxed mb-5">"La cirugía de esterilización de mi gata fue impecable. El equipo es súper profesional y cariñoso. Las instalaciones modernas y el seguimiento post-operatorio fueron de primera."</p>
+              <div class="flex items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" class="w-12 h-12 rounded-full object-cover" />
+                <div>
+                  <p class="font-bold text-sm">Roberto Quispe</p>
+                  <p class="text-xs text-muted">Tutor de Mishi · 5 años</p>
+                </div>
+              </div>
+            </div>
+            <div class="card p-7">
+              <div class="flex items-center gap-1 mb-4" style="color:var(--color-accent)">★★★★★</div>
+              <p class="text-gray-700 leading-relaxed mb-5">"Tuve una emergencia a las 3am con mi cachorro y respondieron de inmediato. La tranquilidad que me dieron no tiene precio. Recomendados al 100%, son los mejores."</p>
+              <div class="flex items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" class="w-12 h-12 rounded-full object-cover" />
+                <div>
+                  <p class="font-bold text-sm">Lucía Vargas</p>
+                  <p class="text-xs text-muted">Tutora de Toby · 2 años</p>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-app">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="relative overflow-hidden rounded-3xl p-8 md:p-16 text-center text-white" style="background: linear-gradient(135deg, #e07856 0%, #c95f3d 100%);">
+          <div class="blob-secondary w-72 h-72 -top-20 -right-20" style="background: radial-gradient(circle, rgba(255,255,255,0.18), transparent 70%);"></div>
+          <div class="relative z-10 max-w-2xl mx-auto">
+            <div class="text-5xl mb-4">🐾</div>
+            <h2 class="text-3xl md:text-5xl font-bold font-display mb-4">¿Listo para agendar la cita de tu mascota?</h2>
+            <p class="text-lg opacity-95 mb-8">Reserva en menos de 2 minutos. Sin llamadas, sin esperas, sin estrés.</p>
+            <a href="booking.html" class="inline-flex items-center gap-2 bg-white text-primary font-bold py-3.5 px-8 rounded-full hover:shadow-2xl hover:scale-105 transition">
+              Reservar ahora
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="appFooter"></div>
+
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const featured = ['sv1','sv4','sv6','sv9'];
+      document.getElementById('servicesGrid').innerHTML = featured.map(id => {
+        const s = SERVICIOS.find(x => x.id === id);
+        return `
+          <a href="services.html#${s.id}" class="card overflow-hidden group">
+            <div class="aspect-[4/3] overflow-hidden bg-soft">
+              <img src="${s.imagen}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="${s.nombre}"/>
+            </div>
+            <div class="p-5">
+              <span class="chip chip-primary mb-3">${s.categoria}</span>
+              <h3 class="font-bold font-display text-lg mb-2" style="color:var(--color-text);">${s.nombre}</h3>
+              <p class="text-sm text-muted line-clamp-2 mb-4">${s.descripcion}</p>
+              <div class="flex items-center justify-between">
+                <span class="text-primary font-bold font-display">${formatCurrency(s.precio)}</span>
+                <span class="text-xs text-muted">${s.duracion} min</span>
+              </div>
+            </div>
+          </a>`;
+      }).join('');
+
+      document.getElementById('vetsGrid').innerHTML = VETERINARIOS.map(v => `
+        <div class="card p-6 text-center">
+          <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-primary/20">
+            <img src="${v.foto}" class="w-full h-full object-cover" alt="${v.nombre}" />
+          </div>
+          <h3 class="font-bold font-display text-lg mb-1">${v.nombre}</h3>
+          <p class="text-sm text-primary font-semibold mb-2">${v.rol}</p>
+          <p class="text-xs text-muted mb-3">${v.experiencia} de experiencia</p>
+          <div class="flex items-center justify-center gap-1 text-xs text-muted">
+              <span>★</span> <span class="font-bold" style="color:var(--color-text);">${v.rating}</span>
+            </div>
+        </div>`).join('');
+    });
+  </script>
+</body>
+</html>

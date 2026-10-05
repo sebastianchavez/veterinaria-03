@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galería · Huellitas Vet</title>
+  <meta name="description" content="Conoce nuestras instalaciones y equipo de Huellitas Vet." />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { primary: '#e07856', secondary: '#3fb8af', accent: '#f4c167' }, fontFamily: { display: ['Poppins'], sans: ['Nunito'] } } }
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="gallery.html" class="bg-app text-gray-800 font-sans">
+  <div id="appHeader"></div>
+
+  <main class="pb-20">
+    <section class="hero-gradient py-16 md:py-20">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex chip chip-secondary mb-4">Nuestras instalaciones</div>
+        <h1 class="text-4xl md:text-6xl font-bold font-display mb-4" style="color:var(--color-text);">Un espacio pensado para ellos</h1>
+        <p class="text-lg text-muted max-w-2xl mx-auto">Conoce nuestras salas, quirófano, grooming y todas las áreas diseñadas para el bienestar de tu mascota.</p>
+      </div>
+    </section>
+
+    <section class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex flex-wrap items-center gap-3 mb-8">
+        <span class="text-sm font-bold text-muted uppercase tracking-wider mr-2">Filtrar:</span>
+        <button class="filter-chip active" data-cat="all">Todo</button>
+        <button class="filter-chip" data-cat="instalaciones">Instalaciones</button>
+        <button class="filter-chip" data-cat="equipo">Equipo</button>
+        <button class="filter-chip" data-cat="mascotas">Pacientes</button>
+      </div>
+
+      <div id="galleryGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+    </section>
+
+    <section class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-3xl overflow-hidden shadow-xl">
+        <div class="grid grid-cols-1 md:grid-cols-2">
+          <img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=900&q=80" class="w-full h-72 md:h-full object-cover" alt="Recepción" />
+          <div class="p-8 md:p-12 bg-card flex flex-col justify-center">
+            <div class="inline-flex chip chip-secondary mb-3 w-max">Visítanos</div>
+            <h2 class="text-3xl font-bold font-display mb-4" style="color:var(--color-text);">Ven a conocer nuestra clínica</h2>
+            <p class="text-muted leading-relaxed mb-6">Te invitamos a recorrer nuestras instalaciones antes de tu primera cita. Nuestro equipo te recibirá con una bebida caliente y muchos mimos para tu mascota.</p>
+            <a href="contact.html" class="btn-primary w-max">Agendar visita</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="appFooter"></div>
+
+  <style>
+    .filter-chip {
+      padding: .5rem 1rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: .85rem;
+      cursor: pointer;
+      background: var(--color-bg-soft);
+      color: var(--color-text-muted);
+      border: 2px solid transparent;
+      transition: all .2s;
+      font-family: 'Poppins', sans-serif;
+    }
+    .filter-chip:hover { background: rgba(63, 184, 175, .08); color: var(--color-secondary); }
+    .filter-chip.active { background: var(--color-secondary); color: #fff; border-color: var(--color-secondary); }
+  </style>
+
+  <script src="js/main.js"></script>
+  <script>
+    const GALERIA = [
+      { id: 'g1', cat: 'instalaciones', src: 'https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=800&q=80', titulo: 'Recepción' },
+      { id: 'g2', cat: 'instalaciones', src: 'https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?w=800&q=80', titulo: 'Sala de consulta' },
+      { id: 'g3', cat: 'instalaciones', src: 'https://images.unsplash.com/photo-1584467735815-f778f274e296?w=800&q=80', titulo: 'Quirófano moderno' },
+      { id: 'g4', cat: 'instalaciones', src: 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=800&q=80', titulo: 'Laboratorio' },
+      { id: 'g5', cat: 'instalaciones', src: 'https://images.unsplash.com/photo-1591946614720-90a587da4a36?w=800&q=80', titulo: 'Sala de grooming' },
+      { id: 'g6', cat: 'instalaciones', src: 'https://images.unsplash.com/photo-1559190394-df5a28aab5c5?w=800&q=80', titulo: 'Área de recuperación' },
+      { id: 'g7', cat: 'equipo', src: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&q=80', titulo: 'Dra. Sofía Ramírez' },
+      { id: 'g8', cat: 'equipo', src: 'https://images.unsplash.com/photo-1612531386530-97286d97c2d2?w=800&q=80', titulo: 'Dr. Carlos Mendoza' },
+      { id: 'g9', cat: 'equipo', src: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=800&q=80', titulo: 'Dra. Lucía Torres' },
+      { id: 'g10', cat: 'mascotas', src: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=800&q=80', titulo: 'Max — Golden Retriever' },
+      { id: 'g11', cat: 'mascotas', src: 'https://images.unsplash.com/photo-1574158622682-e40e69881006?w=800&q=80', titulo: 'Mishi — Persa' },
+      { id: 'g12', cat: 'mascotas', src: 'https://images.unsplash.com/photo-1517849845537-4d257902454a?w=800&q=80', titulo: 'Rocky — Bulldog Francés' }
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const grid = document.getElementById('galleryGrid');
+      const chips = document.querySelectorAll('.filter-chip');
+
+      function render(cat) {
+        const filtered = cat === 'all' ? GALERIA : GALERIA.filter(g => g.cat === cat);
+        grid.innerHTML = filtered.map((g, idx) => `
+          <div class="galeria-item aspect-square relative group" data-src="${g.src}" data-title="${g.titulo}">
+            <img src="${g.src}" alt="${g.titulo}" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
+              <div>
+                <p class="text-white font-bold font-display">${g.titulo}</p>
+                <p class="text-xs text-white/80 capitalize">${g.cat}</p>
+              </div>
+            </div>
+          </div>
+        `).join('');
+
+        grid.querySelectorAll('.galeria-item').forEach(el => {
+          el.addEventListener('click', () => openLightbox(el.dataset.src, el.dataset.title));
+        });
+      }
+
+      chips.forEach(c => {
+        c.addEventListener('click', () => {
+          chips.forEach(x => x.classList.remove('active'));
+          c.classList.add('active');
+          render(c.dataset.cat);
+        });
+      });
+
+      function openLightbox(src, title) {
+        const lb = document.createElement('div');
+        lb.className = 'lightbox';
+        lb.innerHTML = `
+          <button class="absolute top-6 right-6 text-white text-3xl hover:scale-110 transition" id="lbClose">✕</button>
+          <img src="${src}" alt="${title}" />
+          <p class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white font-display font-bold text-lg">${title}</p>`;
+        document.body.appendChild(lb);
+        document.body.style.overflow = 'hidden';
+        const close = () => { lb.remove(); document.body.style.overflow = ''; };
+        document.getElementById('lbClose').addEventListener('click', close);
+        lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+      }
+
+      render('all');
+    });
+  </script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CL">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -87,7 +87,7 @@
               <div class="flex justify-between gap-2"><span class="text-muted">Hora:</span><span id="r-hora" class="font-bold text-right">—</span></div>
               <div class="border-t border-soft pt-3 mt-3 flex justify-between text-base items-center">
                 <span class="font-bold" style="color:var(--color-text);">Total:</span>
-                <span id="r-precio" class="text-primary text-2xl font-bold font-display">S/ 0.00</span>
+                <span id="r-precio" class="text-primary text-2xl font-bold font-display">CLP$ 0</span>
               </div>
             </div>
             <div class="mt-5 p-4 bg-soft rounded-xl">
@@ -132,7 +132,7 @@
       document.getElementById('r-mascota').textContent = m ? `${m.nombre} (${UI.petEmoji(m.especie)})` : '—';
       document.getElementById('r-fecha').textContent = draft.fecha ? formatDate(draft.fecha, { long: true }) : '—';
       document.getElementById('r-hora').textContent = draft.hora || '—';
-      document.getElementById('r-precio').textContent = s ? formatCurrency(s.precio) : 'S/ 0.00';
+      document.getElementById('r-precio').textContent = s ? formatCurrency(s.precio) : 'CLP$ 0';
     }
 
     function updateStepper() {

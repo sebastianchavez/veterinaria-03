@@ -591,3 +591,6 @@ label.label-text {
 @media (max-width: 768px) {
   .modal-content { padding: 1.25rem; }
 }
+/* Allow contact details and headings to fit small phones. */
+body { overflow-wrap: anywhere; }
+.grid > * { min-width: 0; }

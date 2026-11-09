@@ -9,7 +9,7 @@ Sistema de gestión de citas y reservas para clínicas veterinarias, desarrollad
 - **Gestión de Mascotas:** CRUD de mascotas desde el perfil para agilizar futuras reservas.
 - **Historial de Citas:** Visualización de reservas pasadas y futuras con estados en tiempo real (Pendiente, Confirmada, Pagada, Completada, Anulada).
 - **Anulación Inteligente:** Opción de cancelar citas respetando la política de 24 horas de anticipación.
-- **Pagos Simulados:** Pasarela de pago con opciones de Yape/Plin, Tarjeta y Efectivo.
+- **Pagos Simulados:** Pasarela de pago con opciones de Transferencia/Depósito, Tarjeta y Efectivo.
 - **Perfil de Usuario:** Gestión de datos personales y de mascotas.
 
 ### 🛠️ Aspectos Técnicos

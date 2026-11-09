@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CL">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -74,7 +74,7 @@
         <div class="text-center mb-6 pb-6 border-b border-soft">
           <p class="text-xs uppercase tracking-widest text-muted font-bold mb-2">Comprobante de pago</p>
           <p class="text-2xl font-bold font-display text-primary">${r.codigo}</p>
-          <p class="text-xs text-muted mt-1">${new Date().toLocaleString('es-PE')}</p>
+          <p class="text-xs text-muted mt-1">${new Date().toLocaleString('es-CL')}</p>
         </div>
         <div class="grid grid-cols-2 gap-y-3 gap-x-4 text-sm">
           <p class="text-muted">Tutor:</p><p class="font-bold text-right">${user ? user.nombre : '—'}</p>
@@ -98,7 +98,7 @@ HUELLITAS VET · COMPROBANTE DE PAGO
 ═══════════════════════════════════════
 
 Código de reserva: ${r.codigo}
-Fecha de emisión: ${new Date().toLocaleString('es-PE')}
+Fecha de emisión: ${new Date().toLocaleString('es-CL')}
 
 — DATOS DEL TUTOR —
 Nombre: ${user ? user.nombre : '—'}

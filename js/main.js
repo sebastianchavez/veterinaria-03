@@ -1,25 +1,25 @@
 const STORAGE_KEYS = {
-  USERS: 'hv_users',
-  SESSION: 'hv_session',
-  RESERVAS: 'hv_reservas',
-  RESERVA_DRAFT: 'hv_reserva_draft',
-  PAGO_DRAFT: 'hv_pago_draft',
-  MASCOTAS: 'hv_mascotas',
-  CONTACT_MSGS: 'hv_contact_messages',
-  REDIRECT: 'hv_redirect'
+  USERS: 'hv_users_clp_v1',
+  SESSION: 'hv_session_clp_v1',
+  RESERVAS: 'hv_reservas_clp_v1',
+  RESERVA_DRAFT: 'hv_reserva_draft_clp_v1',
+  PAGO_DRAFT: 'hv_pago_draft_clp_v1',
+  MASCOTAS: 'hv_mascotas_clp_v1',
+  CONTACT_MSGS: 'hv_contact_messages_clp_v1',
+  REDIRECT: 'hv_redirect_clp_v1'
 };
 
 const SERVICIOS = [
-  { id: 'sv1', categoria: 'consulta', nombre: 'Consulta General', descripcion: 'Evaluación clínica completa de tu mascota con revisión integral, diagnóstico y recomendaciones personalizadas.', duracion: 45, precio: 80, imagen: 'https://images.unsplash.com/photo-1570824104453-508955ab713e?w=600&q=80' },
-  { id: 'sv2', categoria: 'consulta', nombre: 'Vacunación', descripcion: 'Aplicación de vacunas según el calendario de tu mascota: parvovirus, rabia, séxtuple, triple felina y más.', duracion: 30, precio: 60, imagen: 'https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?w=600&q=80' },
-  { id: 'sv3', categoria: 'consulta', nombre: 'Desparasitación', descripcion: 'Tratamiento antiparasitario interno y externo para proteger a tu mascota de parásitos.', duracion: 20, precio: 40, imagen: 'https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=600&q=80' },
-  { id: 'sv4', categoria: 'estetica', nombre: 'Baño y Corte Completo', descripcion: 'Baño medicado, corte según raza, secado profesional y perfume hipoalergénico.', duracion: 90, precio: 70, imagen: 'https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?w=600&q=80' },
-  { id: 'sv5', categoria: 'estetica', nombre: 'Corte de Uñas y Limpieza', descripcion: 'Corte de uñas, limpieza de oídos y glándulas anales para el confort de tu mascota.', duracion: 30, precio: 25, imagen: 'https://images.unsplash.com/photo-1517849845537-4d257902454a?w=600&q=80' },
-{ id: 'sv6', categoria: 'cirugia', nombre: 'Cirugía Menor', descripcion: 'Procedimientos quirúrgicos ambulatorios con anestesia monitoreada y cuidados post-operatorios.', duracion: 120, precio: 280, imagen: 'https://images.unsplash.com/photo-1588269845464-8993565cac3a?w=600&q=80' },
-  { id: 'sv7', categoria: 'cirugia', nombre: 'Esterilización', descripcion: 'Esterilización con láser de CO2, mínima invasión, pronta recuperación y control del dolor.', duracion: 90, precio: 220, imagen: 'https://images.unsplash.com/photo-1559190394-df5a28aab5c5?w=600&q=80' },
-  { id: 'sv8', categoria: 'analisis', nombre: 'Análisis Clínicos', descripcion: 'Hemograma, química sangu铆nea, perfil renal, tiroideo y otros ex谩menes de laboratorio.', duracion: 30, precio: 90, imagen: 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=600&q=80' },
-  { id: 'sv9', categoria: 'emergencia', nombre: 'Atención de Emergencia', descripcion: 'Servicio 24/7 para urgencias veterinarias. Atención inmediata con equipo de cuidados intensivos.', duracion: 60, precio: 150, imagen: 'https://images.unsplash.com/photo-1588269845464-8993565cac3a?w=600&q=80' },
-  { id: 'sv10', categoria: 'odontologia', nombre: 'Limpieza Dental', descripcion: 'Profilaxis dental con ultrasonido, eliminación de sarro y pulido dental para una boca saludable.', duracion: 60, precio: 180, imagen: 'https://images.unsplash.com/photo-1570824104453-508955ab713e?w=600&q=80' }
+  { id: 'sv1', categoria: 'consulta', nombre: 'Consulta General', descripcion: 'Evaluación clínica completa de tu mascota con revisión integral, diagnóstico y recomendaciones personalizadas.', duracion: 45, precio: 20000, imagen: 'https://images.unsplash.com/photo-1570824104453-508955ab713e?w=600&q=80' },
+  { id: 'sv2', categoria: 'consulta', nombre: 'Vacunación', descripcion: 'Aplicación de vacunas según el calendario de tu mascota: parvovirus, rabia, séxtuple, triple felina y más.', duracion: 30, precio: 15000, imagen: 'https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?w=600&q=80' },
+  { id: 'sv3', categoria: 'consulta', nombre: 'Desparasitación', descripcion: 'Tratamiento antiparasitario interno y externo para proteger a tu mascota de parásitos.', duracion: 20, precio: 10000, imagen: 'https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=600&q=80' },
+  { id: 'sv4', categoria: 'estetica', nombre: 'Baño y Corte Completo', descripcion: 'Baño medicado, corte según raza, secado profesional y perfume hipoalergénico.', duracion: 90, precio: 17500, imagen: 'https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?w=600&q=80' },
+  { id: 'sv5', categoria: 'estetica', nombre: 'Corte de Uñas y Limpieza', descripcion: 'Corte de uñas, limpieza de oídos y glándulas anales para el confort de tu mascota.', duracion: 30, precio: 6250, imagen: 'https://images.unsplash.com/photo-1517849845537-4d257902454a?w=600&q=80' },
+{ id: 'sv6', categoria: 'cirugia', nombre: 'Cirugía Menor', descripcion: 'Procedimientos quirúrgicos ambulatorios con anestesia monitoreada y cuidados post-operatorios.', duracion: 120, precio: 70000, imagen: 'https://images.unsplash.com/photo-1588269845464-8993565cac3a?w=600&q=80' },
+  { id: 'sv7', categoria: 'cirugia', nombre: 'Esterilización', descripcion: 'Esterilización con láser de CO2, mínima invasión, pronta recuperación y control del dolor.', duracion: 90, precio: 55000, imagen: 'https://images.unsplash.com/photo-1559190394-df5a28aab5c5?w=600&q=80' },
+  { id: 'sv8', categoria: 'analisis', nombre: 'Análisis Clínicos', descripcion: 'Hemograma, química sangu铆nea, perfil renal, tiroideo y otros ex谩menes de laboratorio.', duracion: 30, precio: 22500, imagen: 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=600&q=80' },
+  { id: 'sv9', categoria: 'emergencia', nombre: 'Atención de Emergencia', descripcion: 'Servicio 24/7 para urgencias veterinarias. Atención inmediata con equipo de cuidados intensivos.', duracion: 60, precio: 37500, imagen: 'https://images.unsplash.com/photo-1588269845464-8993565cac3a?w=600&q=80' },
+  { id: 'sv10', categoria: 'odontologia', nombre: 'Limpieza Dental', descripcion: 'Profilaxis dental con ultrasonido, eliminación de sarro y pulido dental para una boca saludable.', duracion: 60, precio: 45000, imagen: 'https://images.unsplash.com/photo-1570824104453-508955ab713e?w=600&q=80' }
 ];
 
 const VETERINARIOS = [
@@ -68,7 +68,7 @@ function generateId(prefix = 'id') {
 }
 
 function formatCurrency(value) {
-  return 'S/ ' + Number(value).toFixed(2);
+  return 'CLP$ ' + Number(value).toLocaleString('es-CL', { maximumFractionDigits: 0 });
 }
 
 function formatDate(iso, opts = {}) {
@@ -104,8 +104,8 @@ const Auth = {
     const users = Storage.get(STORAGE_KEYS.USERS, []);
     if (users.length === 0) {
       const baseUsers = [
-        { id: 'u1', nombre: 'Juan Pérez', email: 'juan@test.com', telefono: '+51 999 111 222', dni: '45678901', password: '123456', foto: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=200&q=80', creado: Date.now() - 86400000 * 60 },
-        { id: 'u2', nombre: 'María López', email: 'maria@test.com', telefono: '+51 999 333 444', dni: '47890123', password: '123456', foto: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80', creado: Date.now() - 86400000 * 30 }
+        { id: 'u1', nombre: 'Juan Pérez', email: 'juan@test.com', telefono: '+56 9 9911 1222', dni: '45678901', password: '123456', foto: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=200&q=80', creado: Date.now() - 86400000 * 60 },
+        { id: 'u2', nombre: 'María López', email: 'maria@test.com', telefono: '+56 9 9933 3444', dni: '47890123', password: '123456', foto: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80', creado: Date.now() - 86400000 * 30 }
       ];
       Storage.set(STORAGE_KEYS.USERS, baseUsers);
 
@@ -120,12 +120,12 @@ const Auth = {
 
       const now = Date.now();
       const reservasSeed = [
-        { id: 'r1', codigo: 'HV-00001', userId: 'u1', servicioId: 'sv1', vetId: 'vet1', mascotaId: 'm1', fecha: todayISO(-15), hora: '10:00', estado: 'completada', precio: 80, metodoPago: 'tarjeta', pagado: true, creado: now - 86400000 * 20, notas: 'Chequeo anual, todo en orden.' },
-        { id: 'r2', codigo: 'HV-00002', userId: 'u1', servicioId: 'sv4', vetId: 'vet3', mascotaId: 'm1', fecha: todayISO(-7), hora: '14:00', estado: 'completada', precio: 70, metodoPago: 'yape', pagado: true, creado: now - 86400000 * 10 },
-        { id: 'r3', codigo: 'HV-00003', userId: 'u1', servicioId: 'sv2', vetId: 'vet1', mascotaId: 'm2', fecha: todayISO(3), hora: '11:00', estado: 'confirmada', precio: 60, metodoPago: null, pagado: false, creado: now - 86400000 * 2 },
-        { id: 'r4', codigo: 'HV-00004', userId: 'u2', servicioId: 'sv8', vetId: 'vet4', mascotaId: 'm3', fecha: todayISO(-3), hora: '09:30', estado: 'completada', precio: 90, metodoPago: 'efectivo', pagado: true, creado: now - 86400000 * 5 },
-        { id: 'r5', codigo: 'HV-00005', userId: 'u2', servicioId: 'sv1', vetId: 'vet1', mascotaId: 'm4', fecha: todayISO(5), hora: '16:00', estado: 'pendiente', precio: 80, metodoPago: null, pagado: false, creado: now - 86400000 },
-        { id: 'r6', codigo: 'HV-00006', userId: 'u2', servicioId: 'sv6', vetId: 'vet2', mascotaId: 'm3', fecha: todayISO(-30), hora: '08:00', estado: 'anulada', precio: 280, metodoPago: null, pagado: false, creado: now - 86400000 * 40, motivoAnulacion: 'Reprogramada para otra fecha' }
+        { id: 'r1', codigo: 'HV-00001', userId: 'u1', servicioId: 'sv1', vetId: 'vet1', mascotaId: 'm1', fecha: todayISO(-15), hora: '10:00', estado: 'completada', precio: 20000, metodoPago: 'tarjeta', pagado: true, creado: now - 86400000 * 20, notas: 'Chequeo anual, todo en orden.' },
+        { id: 'r2', codigo: 'HV-00002', userId: 'u1', servicioId: 'sv4', vetId: 'vet3', mascotaId: 'm1', fecha: todayISO(-7), hora: '14:00', estado: 'completada', precio: 17500, metodoPago: 'yape', pagado: true, creado: now - 86400000 * 10 },
+        { id: 'r3', codigo: 'HV-00003', userId: 'u1', servicioId: 'sv2', vetId: 'vet1', mascotaId: 'm2', fecha: todayISO(3), hora: '11:00', estado: 'confirmada', precio: 15000, metodoPago: null, pagado: false, creado: now - 86400000 * 2 },
+        { id: 'r4', codigo: 'HV-00004', userId: 'u2', servicioId: 'sv8', vetId: 'vet4', mascotaId: 'm3', fecha: todayISO(-3), hora: '09:30', estado: 'completada', precio: 22500, metodoPago: 'efectivo', pagado: true, creado: now - 86400000 * 5 },
+        { id: 'r5', codigo: 'HV-00005', userId: 'u2', servicioId: 'sv1', vetId: 'vet1', mascotaId: 'm4', fecha: todayISO(5), hora: '16:00', estado: 'pendiente', precio: 20000, metodoPago: null, pagado: false, creado: now - 86400000 },
+        { id: 'r6', codigo: 'HV-00006', userId: 'u2', servicioId: 'sv6', vetId: 'vet2', mascotaId: 'm3', fecha: todayISO(-30), hora: '08:00', estado: 'anulada', precio: 70000, metodoPago: null, pagado: false, creado: now - 86400000 * 40, motivoAnulacion: 'Reprogramada para otra fecha' }
       ];
       Storage.set(STORAGE_KEYS.RESERVAS, reservasSeed);
     }
@@ -306,8 +306,8 @@ const Reservas = {
 
 const Pagos = {
   metodos: [
-    { id: 'yape', nombre: 'Yape', icono: '💜', descripcion: 'Paga con tu cuenta Yape' },
-    { id: 'plin', nombre: 'Plin', icono: '💚', descripcion: 'Paga con tu cuenta Plin' },
+    { id: 'yape', nombre: 'Transferencia', icono: '💜', descripcion: 'Paga con tu cuenta Transferencia' },
+    { id: 'plin', nombre: 'Depósito', icono: '💚', descripcion: 'Paga con tu cuenta Depósito' },
     { id: 'tarjeta', nombre: 'Tarjeta', icono: '💳', descripcion: 'Visa, Mastercard o Diners' },
     { id: 'efectivo', nombre: 'Efectivo', icono: '💵', descripcion: 'Paga en consultorio' }
   ],
@@ -510,7 +510,7 @@ const UI = {
               </ul>
               <div class="mt-4 flex items-center gap-2 text-xs text-muted">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                +51 999 888 777
+                +56 9 9988 8777
               </div>
             </div>
           </div>
